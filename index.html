@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Doutor Revela Segredo Para Aumentar a Performance</title>
+<meta name="description" content="Médico especialista revela técnica secreta para aumentar performance masculina em poucos dias de forma 100% natural.">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  :root{
+    --red:#E8000D;
+    --red-dark:#B50009;
+    --red-light:#FF1A24;
+    --white:#FFFFFF;
+    --gray-light:#F7F7F7;
+    --gray:#888;
+    --black:#111;
+    --pulse-red:#E8000D;
+  }
+  html{font-size:16px;scroll-behavior:smooth}
+  body{
+    background:#fff;
+    color:var(--black);
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    min-height:100vh;
+    overflow-x:hidden;
+  }
+
+  /* COUNTDOWN BAR */
+  #top-bar{
+    background:var(--red);
+    color:#fff;
+    text-align:center;
+    padding:10px 12px;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:.3px;
+    position:sticky;
+    top:0;
+    z-index:999;
+    box-shadow:0 2px 8px rgba(232,0,13,.4);
+  }
+  #top-bar .viewers{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .dot-live{
+    width:8px;height:8px;
+    border-radius:50%;
+    background:#fff;
+    display:inline-block;
+    animation:blink 1s infinite;
+  }
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+
+  /* MAIN CONTAINER */
+  .main{
+    max-width:860px;
+    margin:0 auto;
+    padding:0 12px 40px;
+  }
+
+  /* HEADLINE */
+  .headline-wrap{
+    padding:22px 8px 14px;
+    text-align:center;
+  }
+  .eyebrow{
+    display:inline-block;
+    background:var(--red);
+    color:#fff;
+    font-size:11px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    padding:4px 12px;
+    border-radius:3px;
+    margin-bottom:10px;
+  }
+  h1{
+    font-size:clamp(20px,5.5vw,34px);
+    font-weight:900;
+    line-height:1.18;
+    color:var(--black);
+    text-align:center;
+    text-transform:uppercase;
+  }
+  h1 span{color:var(--red);}
+  .sub-headline{
+    margin-top:8px;
+    font-size:clamp(13px,3.5vw,16px);
+    color:#444;
+    font-weight:500;
+    line-height:1.5;
+  }
+
+  /* TRUST STRIP */
+  .trust-strip{
+    display:flex;
+    justify-content:center;
+    gap:16px;
+    flex-wrap:wrap;
+    margin:10px 0 14px;
+    font-size:12px;
+    color:#555;
+    font-weight:600;
+  }
+  .trust-item{
+    display:flex;align-items:center;gap:4px;
+  }
+  .trust-item svg{width:14px;height:14px;fill:var(--red);}
+
+  /* VIDEO PLAYER */
+  .player-wrap{
+    position:relative;
+    background:#000;
+    border-radius:8px;
+    overflow:hidden;
+    box-shadow:0 8px 32px rgba(0,0,0,.25);
+    aspect-ratio:16/9;
+    width:100%;
+  }
+  #main-video{
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+  }
+
+  /* CUSTOM CONTROLS */
+  .controls{
+    position:absolute;
+    bottom:0;left:0;right:0;
+    background:linear-gradient(transparent,rgba(0,0,0,.85));
+    padding:28px 12px 10px;
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    opacity:0;
+    transition:opacity .25s;
+  }
+  .player-wrap:hover .controls,
+  .player-wrap.show-controls .controls{opacity:1;}
+
+  /* PROGRESS BAR - VTURB style (thicker) */
+  .progress-wrap{
+    position:relative;
+    height:5px;
+    background:rgba(255,255,255,.25);
+    border-radius:999px;
+    cursor:pointer;
+  }
+  .progress-fill{
+    height:100%;
+    background:var(--red);
+    border-radius:999px;
+    width:0%;
+    position:relative;
+    transition:width .1s linear;
+  }
+  .progress-thumb{
+    position:absolute;
+    right:-6px;top:50%;
+    transform:translateY(-50%);
+    width:14px;height:14px;
+    background:#fff;
+    border-radius:50%;
+    box-shadow:0 0 4px rgba(0,0,0,.4);
+    display:none;
+  }
+  .progress-wrap:hover .progress-thumb{display:block;}
+
+  .ctrl-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .ctrl-btn{
+    background:none;border:none;
+    color:#fff;cursor:pointer;
+    padding:2px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .ctrl-btn svg{width:20px;height:20px;fill:#fff;}
+  .time-display{
+    color:#fff;
+    font-size:12px;
+    font-weight:600;
+    font-variant-numeric:tabular-nums;
+    flex:1;
+  }
+  .vol-wrap{
+    display:flex;align-items:center;gap:6px;
+  }
+  .vol-slider{
+    width:60px;
+    -webkit-appearance:none;
+    height:3px;
+    border-radius:999px;
+    background:rgba(255,255,255,.4);
+    outline:none;
+  }
+  .vol-slider::-webkit-slider-thumb{
+    -webkit-appearance:none;
+    width:12px;height:12px;
+    border-radius:50%;
+    background:#fff;
+    cursor:pointer;
+  }
+  .fullscreen-btn{margin-left:auto;}
+
+  /* PLAY OVERLAY */
+  #play-overlay{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(0,0,0,.35);
+    cursor:pointer;
+    transition:background .2s;
+  }
+  #play-overlay:hover{background:rgba(0,0,0,.2);}
+  #play-overlay svg{width:68px;height:68px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5));}
+  #play-overlay.hidden{display:none;}
+
+  /* PAUSE OVERLAY */
+  #pause-overlay{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(0,0,0,.0);
+    cursor:pointer;
+    opacity:0;
+    transition:opacity .2s;
+  }
+  #pause-overlay.show{opacity:1;background:rgba(0,0,0,.25);}
+
+  /* CTA BUTTON */
+  #cta-btn{
+    display:none;
+    width:100%;
+    margin:18px auto 0;
+    max-width:500px;
+  }
+  #cta-btn button{
+    width:100%;
+    background:linear-gradient(135deg,var(--red),var(--red-dark));
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    padding:18px 24px;
+    font-size:clamp(17px,4.5vw,22px);
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+    cursor:pointer;
+    box-shadow:0 4px 20px rgba(232,0,13,.45);
+    animation:pulse-btn 2s infinite;
+    position:relative;
+    overflow:hidden;
+  }
+  #cta-btn button::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);
+    animation:shine 2.5s infinite;
+  }
+  @keyframes shine{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+  @keyframes pulse-btn{
+    0%,100%{box-shadow:0 4px 20px rgba(232,0,13,.45),0 0 0 0 rgba(232,0,13,.3)}
+    50%{box-shadow:0 4px 28px rgba(232,0,13,.65),0 0 0 10px rgba(232,0,13,0)}
+  }
+  .cta-sub{
+    text-align:center;
+    font-size:11px;
+    color:#888;
+    margin-top:6px;
+  }
+  .cta-sub span{color:var(--red);font-weight:700;}
+
+  /* URGENCY UNDER VIDEO */
+  .urgency-strip{
+    background:var(--gray-light);
+    border-left:4px solid var(--red);
+    border-radius:0 6px 6px 0;
+    padding:10px 14px;
+    margin:16px 0;
+    font-size:13px;
+    color:#333;
+    font-weight:600;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .urgency-strip svg{width:18px;height:18px;fill:var(--red);flex-shrink:0;}
+
+  /* SOCIAL PROOF COMMENTS */
+  .section-title{
+    font-size:clamp(16px,4vw,20px);
+    font-weight:900;
+    text-align:center;
+    margin:24px 0 14px;
+    text-transform:uppercase;
+  }
+  .section-title span{color:var(--red);}
+
+  .comments{display:flex;flex-direction:column;gap:10px;}
+  .comment{
+    background:var(--gray-light);
+    border-radius:10px;
+    padding:12px 14px;
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+  }
+  .avatar{
+    width:40px;height:40px;
+    border-radius:50%;
+    background:var(--red);
+    color:#fff;
+    font-weight:900;
+    font-size:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+  }
+  .comment-body{}
+  .comment-name{font-weight:800;font-size:13px;color:var(--black);}
+  .comment-text{font-size:13px;color:#444;margin-top:3px;line-height:1.45;}
+  .stars{color:var(--red);font-size:12px;margin-top:2px;}
+
+  /* GUARANTEE */
+  .guarantee{
+    border:2px solid var(--red);
+    border-radius:10px;
+    padding:16px;
+    text-align:center;
+    margin:20px 0;
+  }
+  .guarantee-icon{font-size:36px;margin-bottom:6px;}
+  .guarantee h3{font-size:16px;font-weight:900;color:var(--red);text-transform:uppercase;}
+  .guarantee p{font-size:13px;color:#555;margin-top:6px;line-height:1.5;}
+
+  /* FOOTER */
+  footer{
+    text-align:center;
+    font-size:11px;
+    color:#aaa;
+    padding:20px 12px;
+    border-top:1px solid #eee;
+    margin-top:30px;
+    line-height:1.8;
+  }
+
+  /* PIX PAGE */
+  #pix-page{
+    display:none;
+    min-height:100vh;
+    background:#fff;
+  }
+  .pix-header{
+    background:var(--red);
+    color:#fff;
+    text-align:center;
+    padding:16px 12px;
+  }
+  .pix-header h2{font-size:clamp(16px,4.5vw,22px);font-weight:900;text-transform:uppercase;}
+  .pix-header p{font-size:13px;margin-top:4px;opacity:.9;}
+
+  .pix-body{
+    max-width:480px;
+    margin:0 auto;
+    padding:20px 16px 40px;
+  }
+  .pix-form-title{
+    font-size:15px;
+    font-weight:800;
+    color:var(--black);
+    margin-bottom:14px;
+    text-align:center;
+    text-transform:uppercase;
+  }
+  .pix-form-title span{color:var(--red);}
+
+  .form-group{
+    margin-bottom:14px;
+  }
+  .form-group label{
+    display:block;
+    font-size:12px;
+    font-weight:700;
+    color:#333;
+    margin-bottom:5px;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+  }
+  .form-group input{
+    width:100%;
+    border:2px solid #e0e0e0;
+    border-radius:8px;
+    padding:13px 14px;
+    font-size:15px;
+    outline:none;
+    transition:border-color .2s;
+    background:#fff;
+    color:var(--black);
+    -webkit-appearance:none;
+  }
+  .form-group input:focus{border-color:var(--red);}
+  .form-group input::placeholder{color:#bbb;}
+
+  .btn-gerar{
+    width:100%;
+    background:linear-gradient(135deg,var(--red),var(--red-dark));
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    padding:17px;
+    font-size:17px;
+    font-weight:900;
+    text-transform:uppercase;
+    cursor:pointer;
+    margin-top:6px;
+    box-shadow:0 4px 16px rgba(232,0,13,.4);
+    animation:pulse-btn 2s infinite;
+    letter-spacing:.5px;
+  }
+
+  /* PIX RESULT */
+  #pix-result{display:none;margin-top:20px;}
+  .pix-steps{
+    background:var(--gray-light);
+    border-radius:10px;
+    padding:16px;
+    margin-bottom:16px;
+  }
+  .pix-steps h4{
+    font-size:14px;
+    font-weight:900;
+    color:var(--black);
+    margin-bottom:10px;
+    text-transform:uppercase;
+  }
+  .pix-step{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    margin-bottom:8px;
+    font-size:13px;
+    color:#444;
+    line-height:1.45;
+  }
+  .step-num{
+    background:var(--red);
+    color:#fff;
+    font-size:11px;
+    font-weight:900;
+    width:22px;height:22px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+
+  .qr-box{
+    text-align:center;
+    margin-bottom:16px;
+  }
+  .qr-box img{
+    width:min(220px,70vw);
+    height:auto;
+    border:3px solid var(--red);
+    border-radius:10px;
+    padding:6px;
+    background:#fff;
+  }
+  .qr-label{
+    font-size:12px;
+    font-weight:700;
+    color:#555;
+    margin-top:6px;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+  }
+
+  .pix-code-box{
+    background:#f9f9f9;
+    border:2px dashed var(--red);
+    border-radius:8px;
+    padding:12px;
+    margin-bottom:12px;
+  }
+  .pix-code-text{
+    font-size:10.5px;
+    color:#333;
+    word-break:break-all;
+    line-height:1.6;
+    font-family:monospace;
+  }
+  .btn-copiar{
+    width:100%;
+    background:#fff;
+    color:var(--red);
+    border:2px solid var(--red);
+    border-radius:8px;
+    padding:14px;
+    font-size:15px;
+    font-weight:900;
+    cursor:pointer;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+    transition:all .2s;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+  }
+  .btn-copiar:active{background:var(--red);color:#fff;}
+  .btn-copiar svg{width:18px;height:18px;}
+
+  /* AGUARDANDO */
+  .aguardando{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    font-size:14px;
+    font-weight:700;
+    color:#555;
+    margin-top:14px;
+  }
+  .pulse-dot{
+    width:12px;height:12px;
+    background:var(--red);
+    border-radius:50%;
+    animation:pulse-dot 1.2s infinite;
+    flex-shrink:0;
+  }
+  @keyframes pulse-dot{
+    0%,100%{opacity:1;transform:scale(1)}
+    50%{opacity:.3;transform:scale(.7)}
+  }
+
+  /* MODAL EXIT */
+  #exit-modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.75);
+    z-index:9999;
+    align-items:center;
+    justify-content:center;
+    padding:16px;
+  }
+  #exit-modal.show{display:flex;}
+  .modal-box{
+    background:#fff;
+    border-radius:14px;
+    padding:28px 22px;
+    max-width:380px;
+    width:100%;
+    text-align:center;
+    animation:modal-in .3s ease;
+  }
+  @keyframes modal-in{from{transform:scale(.85);opacity:0}to{transform:scale(1);opacity:1}}
+  .modal-icon{font-size:42px;margin-bottom:8px;}
+  .modal-box h3{
+    font-size:18px;
+    font-weight:900;
+    color:var(--red);
+    text-transform:uppercase;
+    margin-bottom:8px;
+  }
+  .modal-box p{
+    font-size:14px;
+    color:#444;
+    line-height:1.55;
+    margin-bottom:18px;
+  }
+  .modal-box p strong{color:var(--red);}
+  .modal-btns{display:flex;flex-direction:column;gap:10px;}
+  .btn-modal-stay{
+    background:linear-gradient(135deg,var(--red),var(--red-dark));
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    padding:15px;
+    font-size:15px;
+    font-weight:900;
+    cursor:pointer;
+    text-transform:uppercase;
+  }
+  .btn-modal-leave{
+    background:none;
+    color:#999;
+    border:none;
+    font-size:12px;
+    cursor:pointer;
+    text-decoration:underline;
+  }
+
+  /* COPY TOAST */
+  #copy-toast{
+    position:fixed;
+    bottom:20px;left:50%;
+    transform:translateX(-50%) translateY(60px);
+    background:#222;
+    color:#fff;
+    padding:10px 20px;
+    border-radius:999px;
+    font-size:13px;
+    font-weight:700;
+    z-index:9999;
+    transition:transform .3s ease;
+    pointer-events:none;
+  }
+  #copy-toast.show{transform:translateX(-50%) translateY(0);}
+
+  /* Scrollbar hide for mobile */
+  ::-webkit-scrollbar{width:4px;}
+  ::-webkit-scrollbar-thumb{background:#ddd;border-radius:999px;}
+</style>
+</head>
+<body>
+
+<!-- COUNTDOWN TOP BAR -->
+<div id="top-bar">
+  <span class="viewers">
+    <span class="dot-live"></span>
+    <span id="viewer-count">0</span> homens assistindo agora • ⏰ Disponível apenas <strong>HOJE</strong>
+  </span>
+</div>
+
+<!-- VSL PAGE -->
+<div id="vsl-page">
+  <div class="main">
+
+    <!-- HEADLINE -->
+    <div class="headline-wrap">
+      <span class="eyebrow">⚠️ Atenção Homens</span>
+      <h1>Doutor Revela o <span>Segredo Oculto</span> Para Aumentar a Performance em Alguns Dias de Forma <span>Natural</span></h1>
+      <p class="sub-headline">Assista o vídeo abaixo até o final e descubra o método que está transformando a vida de milhares de homens</p>
+    </div>
+
+    <!-- TRUST STRIP -->
+    <div class="trust-strip">
+      <span class="trust-item">
+        <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        +47.000 homens
+      </span>
+      <span class="trust-item">
+        <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        Método comprovado
+      </span>
+      <span class="trust-item">
+        <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        100% Natural
+      </span>
+    </div>
+
+    <!-- VIDEO PLAYER -->
+    <div class="player-wrap" id="player-wrap">
+      <video id="main-video" preload="metadata" playsinline webkit-playsinline>
+        <source src="https://metodotripe.shop/wp-content/uploads/2026/06/vsl1.mp4" type="video/mp4">
+      </video>
+
+      <!-- PLAY OVERLAY -->
+      <div id="play-overlay">
+        <svg viewBox="0 0 100 100" fill="none">
+          <circle cx="50" cy="50" r="50" fill="rgba(232,0,13,0.9)"/>
+          <polygon points="38,28 38,72 72,50" fill="white"/>
+        </svg>
+      </div>
+
+      <!-- PAUSE OVERLAY (click to toggle) -->
+      <div id="pause-overlay"></div>
+
+      <!-- CONTROLS -->
+      <div class="controls" id="controls">
+        <div class="progress-wrap" id="progress-wrap">
+          <div class="progress-fill" id="progress-fill">
+            <div class="progress-thumb"></div>
+          </div>
+        </div>
+        <div class="ctrl-row">
+          <button class="ctrl-btn" id="play-btn" title="Play/Pause">
+            <svg id="play-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+          </button>
+          <span class="time-display" id="time-display">0:00 / 1:52</span>
+          <div class="vol-wrap">
+            <button class="ctrl-btn" id="mute-btn" title="Mudo">
+              <svg id="vol-icon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+            </button>
+            <input type="range" class="vol-slider" id="vol-slider" min="0" max="1" step="0.05" value="1">
+          </div>
+          <button class="ctrl-btn fullscreen-btn" id="fs-btn" title="Tela cheia">
+            <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA BUTTON (aparece após 1:52) -->
+    <div id="cta-btn">
+      <button onclick="goToPix()">
+        🔓 DESCOBRIR AGORA — QUERO MEU ACESSO
+      </button>
+      <p class="cta-sub">⚡ <span>Oferta exclusiva</span> para quem assistiu até o final • Vagas limitadas</p>
+    </div>
+
+    <!-- URGENCY -->
+    <div class="urgency-strip" id="urgency-strip">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+      <span>🔥 Atenção: assista o vídeo <strong>até o final</strong> para descobrir o segredo revelado pelo Doutor</span>
+    </div>
+
+    <!-- COMMENTS / SOCIAL PROOF -->
+    <div class="section-title">O que estão <span>dizendo</span></div>
+    <div class="comments">
+      <div class="comment">
+        <div class="avatar">M</div>
+        <div class="comment-body">
+          <div class="comment-name">Marcos T. — SP</div>
+          <div class="stars">★★★★★</div>
+          <div class="comment-text">Nunca imaginei que algo tão simples pudesse fazer tanta diferença. Em menos de 2 semanas já senti o resultado.</div>
+        </div>
+      </div>
+      <div class="comment">
+        <div class="avatar">R</div>
+        <div class="comment-body">
+          <div class="comment-name">Roberto A. — RJ</div>
+          <div class="stars">★★★★★</div>
+          <div class="comment-text">O método do Doutor é diferente de tudo que já vi. Fiz os exercícios que ele ensina e o resultado foi impressionante.</div>
+        </div>
+      </div>
+      <div class="comment">
+        <div class="avatar">J</div>
+        <div class="comment-body">
+          <div class="comment-name">João P. — MG</div>
+          <div class="stars">★★★★★</div>
+          <div class="comment-text">Minha autoconfiança voltou completamente. Recomendo para qualquer homem que quer resultados de verdade.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GUARANTEE -->
+    <div class="guarantee">
+      <div class="guarantee-icon">🛡️</div>
+      <h3>Garantia Total de 7 Dias</h3>
+      <p>Se por qualquer motivo você não estiver 100% satisfeito, devolvemos seu dinheiro sem perguntas. Risco zero para você.</p>
+    </div>
+
+    <footer>
+      © 2026 Método Tripê — Todos os direitos reservados<br>
+      Este produto não substitui orientação médica profissional.<br>
+      Os resultados podem variar de pessoa para pessoa.
+    </footer>
+  </div>
+</div>
+
+<!-- PIX PAGE -->
+<div id="pix-page">
+  <div class="pix-header">
+    <h2>🎉 Parabéns! Você garantiu seu acesso</h2>
+    <p>Preencha seus dados e gere o PIX para liberar as aulas agora</p>
+  </div>
+
+  <div class="pix-body">
+    <div class="pix-form-title">Preencha os dados abaixo para <span>receber as aulas</span></div>
+
+    <div id="pix-form">
+      <div class="form-group">
+        <label>Nome completo</label>
+        <input type="text" id="inp-nome" placeholder="Seu nome completo" autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label>E-mail</label>
+        <input type="email" id="inp-email" placeholder="seuemail@gmail.com" autocomplete="email">
+      </div>
+      <div class="form-group">
+        <label>WhatsApp</label>
+        <input type="tel" id="inp-wpp" placeholder="(11) 99999-9999" autocomplete="tel">
+      </div>
+      <button class="btn-gerar" onclick="gerarPix()">🔐 GERAR PIX AGORA</button>
+    </div>
+
+    <div id="pix-result">
+      <!-- Steps -->
+      <div class="pix-steps">
+        <h4>📋 Como pagar com PIX:</h4>
+        <div class="pix-step">
+          <span class="step-num">1</span>
+          <span>Abra o aplicativo do seu banco ou carteira digital</span>
+        </div>
+        <div class="pix-step">
+          <span class="step-num">2</span>
+          <span>Toque em <strong>PIX → Pagar → Copia e Cola</strong> ou escaneie o QR Code</span>
+        </div>
+        <div class="pix-step">
+          <span class="step-num">3</span>
+          <span>Cole o código copiado ou aponte a câmera para o QR Code</span>
+        </div>
+        <div class="pix-step">
+          <span class="step-num">4</span>
+          <span>Confirme o pagamento e aguarde a liberação do acesso no seu e-mail</span>
+        </div>
+      </div>
+
+      <!-- QR CODE -->
+      <div class="qr-box">
+        <img src="https://metodotripe.shop/wp-content/uploads/2026/06/download.png" alt="QR Code PIX" loading="lazy">
+        <p class="qr-label">Escaneie o QR Code</p>
+      </div>
+
+      <!-- PIX CODE -->
+      <div class="pix-code-box">
+        <div class="pix-code-text" id="pix-code-display">00020101021226940014br.gov.bcb.pix2572qrcode.cartwavehub.com.br/v2/qr/cob/8aa578dd-ade5-48ce-8cb8-9a70b7a603685204000053039865802BR5925TELEPAGAMENTOS E INTERMED6009SAO PAULO62070503***63046236</div>
+      </div>
+
+      <button class="btn-copiar" onclick="copiarCodigo()">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+        COPIAR CÓDIGO PIX
+      </button>
+
+      <div class="aguardando">
+        <span class="pulse-dot"></span>
+        Aguardando pagamento...
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EXIT MODAL -->
+<div id="exit-modal">
+  <div class="modal-box">
+    <div class="modal-icon">⚠️</div>
+    <h3>Espera! Não saia ainda</h3>
+    <p><strong>Esta aula gratuita só estará disponível HOJE.</strong><br><br>Se você fechar agora, perderá acesso ao segredo que o Doutor revelou e que já transformou +47.000 homens.</p>
+    <div class="modal-btns">
+      <button class="btn-modal-stay" onclick="closeModal()">🎬 CONTINUAR ASSISTINDO</button>
+      <button class="btn-modal-leave" onclick="closeModal()">Sair mesmo assim</button>
+    </div>
+  </div>
+</div>
+
+<!-- COPY TOAST -->
+<div id="copy-toast">✅ Código copiado!</div>
+
+<script>
+const PIX_CODE = "00020101021226940014br.gov.bcb.pix2572qrcode.cartwavehub.com.br/v2/qr/cob/8aa578dd-ade5-48ce-8cb8-9a70b7a603685204000053039865802BR5925TELEPAGAMENTOS E INTERMED6009SAO PAULO62070503***63046236";
+const VIDEO_DURATION = 112; // 1:52 em segundos
+
+const video = document.getElementById('main-video');
+const playerWrap = document.getElementById('player-wrap');
+const playOverlay = document.getElementById('play-overlay');
+const pauseOverlay = document.getElementById('pause-overlay');
+const progressFill = document.getElementById('progress-fill');
+const progressWrap = document.getElementById('progress-wrap');
+const playBtn = document.getElementById('play-btn');
+const playIcon = document.getElementById('play-icon');
+const volSlider = document.getElementById('vol-slider');
+const muteBtn = document.getElementById('mute-btn');
+const volIcon = document.getElementById('vol-icon');
+const timeDisplay = document.getElementById('time-display');
+const ctaBtn = document.getElementById('cta-btn');
+
+let ctaShown = false;
+let controlsTimer;
+
+// VIEWER COUNT - random between 127 e 312, oscila
+function randomViewers(){return Math.floor(Math.random()*(312-127+1))+127;}
+let vCount = randomViewers();
+document.getElementById('viewer-count').textContent = vCount;
+setInterval(()=>{
+  vCount += Math.floor(Math.random()*7)-3;
+  vCount = Math.max(110,Math.min(320,vCount));
+  document.getElementById('viewer-count').textContent = vCount;
+},4000);
+
+// FORMAT TIME
+function fmtTime(s){
+  s=Math.floor(s);
+  const m=Math.floor(s/60);
+  const sec=String(s%60).padStart(2,'0');
+  return m+':'+sec;
+}
+
+// PLAY / PAUSE
+function playVideo(){
+  video.play();
+  playIcon.innerHTML='<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';
+  playOverlay.classList.add('hidden');
+}
+function pauseVideo(){
+  video.pause();
+  playIcon.innerHTML='<polygon points="5,3 19,12 5,21"/>';
+}
+
+playOverlay.addEventListener('click',()=>{
+  playVideo();
+  showControlsTemp();
+});
+pauseOverlay.addEventListener('click',()=>{
+  if(video.paused) playVideo(); else pauseVideo();
+  showControlsTemp();
+});
+playBtn.addEventListener('click',()=>{
+  if(video.paused) playVideo(); else pauseVideo();
+  showControlsTemp();
+});
+
+// CONTROLS VISIBILITY
+function showControlsTemp(){
+  playerWrap.classList.add('show-controls');
+  clearTimeout(controlsTimer);
+  controlsTimer=setTimeout(()=>playerWrap.classList.remove('show-controls'),2500);
+}
+playerWrap.addEventListener('mousemove',showControlsTemp);
+playerWrap.addEventListener('touchstart',showControlsTemp,{passive:true});
+
+// PROGRESS
+video.addEventListener('timeupdate',()=>{
+  const pct=(video.currentTime/VIDEO_DURATION)*100;
+  progressFill.style.width=Math.min(pct,100)+'%';
+  timeDisplay.textContent=fmtTime(video.currentTime)+' / 1:52';
+
+  // Show CTA after video ends (1:52)
+  if(video.currentTime>=VIDEO_DURATION && !ctaShown){
+    ctaShown=true;
+    video.pause();
+    pauseVideo();
+    ctaBtn.style.display='block';
+    ctaBtn.scrollIntoView({behavior:'smooth',block:'nearest'});
+  }
+});
+
+progressWrap.addEventListener('click',(e)=>{
+  const rect=progressWrap.getBoundingClientRect();
+  const pct=(e.clientX-rect.left)/rect.width;
+  video.currentTime=pct*VIDEO_DURATION;
+  showControlsTemp();
+});
+progressWrap.addEventListener('touchstart',(e)=>{
+  const rect=progressWrap.getBoundingClientRect();
+  const pct=(e.touches[0].clientX-rect.left)/rect.width;
+  video.currentTime=Math.max(0,Math.min(pct*VIDEO_DURATION,VIDEO_DURATION));
+  showControlsTemp();
+},{passive:true});
+
+// VOLUME
+volSlider.addEventListener('input',()=>{
+  video.volume=volSlider.value;
+  video.muted=video.volume===0;
+  updateVolIcon();
+});
+muteBtn.addEventListener('click',()=>{
+  video.muted=!video.muted;
+  volSlider.value=video.muted?0:video.volume||1;
+  updateVolIcon();
+});
+function updateVolIcon(){
+  if(video.muted||video.volume===0){
+    volIcon.innerHTML='<path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>';
+  } else {
+    volIcon.innerHTML='<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>';
+  }
+}
+
+// FULLSCREEN
+document.getElementById('fs-btn').addEventListener('click',()=>{
+  if(document.fullscreenElement){
+    document.exitFullscreen();
+  } else {
+    playerWrap.requestFullscreen&&playerWrap.requestFullscreen();
+  }
+});
+
+// PIX FUNCTIONS
+function goToPix(){
+  document.getElementById('vsl-page').style.display='none';
+  document.getElementById('pix-page').style.display='block';
+  window.scrollTo(0,0);
+}
+
+function gerarPix(){
+  const nome=document.getElementById('inp-nome').value.trim();
+  const email=document.getElementById('inp-email').value.trim();
+  const wpp=document.getElementById('inp-wpp').value.trim();
+  if(!nome||!email||!wpp){
+    alert('Preencha todos os campos para continuar.');
+    return;
+  }
+  document.getElementById('pix-form').style.display='none';
+  document.getElementById('pix-result').style.display='block';
+  document.getElementById('pix-result').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function copiarCodigo(){
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(PIX_CODE).then(showToast);
+  } else {
+    const ta=document.createElement('textarea');
+    ta.value=PIX_CODE;
+    ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    showToast();
+  }
+}
+
+function showToast(){
+  const t=document.getElementById('copy-toast');
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2500);
+}
+
+// EXIT INTENT
+let exitShown=false;
+function showExitModal(){
+  if(!exitShown){
+    exitShown=true;
+    document.getElementById('exit-modal').classList.add('show');
+  }
+}
+function closeModal(){
+  document.getElementById('exit-modal').classList.remove('show');
+  if(!video.paused&&document.getElementById('vsl-page').style.display!=='none'){
+    // resume
+  }
+  // scroll back to video
+  const vp=document.getElementById('player-wrap');
+  if(vp) vp.scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+// Desktop: mouseleave
+document.addEventListener('mouseleave',(e)=>{
+  if(e.clientY<10) showExitModal();
+});
+
+// Mobile: back button / visibility
+document.addEventListener('visibilitychange',()=>{
+  if(document.visibilityState==='hidden') showExitModal();
+});
+
+// Android back
+window.addEventListener('popstate',()=>{
+  showExitModal();
+  history.pushState(null,'',location.href);
+});
+history.pushState(null,'',location.href);
+
+// WhatsApp mask
+document.getElementById('inp-wpp').addEventListener('input',function(){
+  let v=this.value.replace(/\D/g,'');
+  if(v.length>11)v=v.slice(0,11);
+  if(v.length>6) v='('+v.slice(0,2)+') '+v.slice(2,7)+'-'+v.slice(7);
+  else if(v.length>2) v='('+v.slice(0,2)+') '+v.slice(2);
+  else if(v.length>0) v='('+v;
+  this.value=v;
+});
+</script>
+</body>
+</html>
