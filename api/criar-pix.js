@@ -31,7 +31,7 @@ export default async function handler(req, res) {
     const idempotencyKey = `${Date.now()}-${Math.random().toString(36).substring(2, 10)}`;
 
     const paymentData = {
-      transaction_amount: 9,90,
+      transaction_amount: 9.90,
       description: 'Acesso ao conteúdo - Método Tripê',
       payment_method_id: 'pix',
       payer: {
