@@ -431,6 +431,37 @@
     animation:pulse-btn 2s infinite;
     letter-spacing:.5px;
   }
+  .btn-gerar:disabled{
+    opacity:.6;
+    cursor:not-allowed;
+    animation:none;
+  }
+
+  /* LOADING SPINNER */
+  .spinner{
+    display:inline-block;
+    width:16px;height:16px;
+    border:2px solid rgba(255,255,255,.4);
+    border-top-color:#fff;
+    border-radius:50%;
+    animation:spin .7s linear infinite;
+    vertical-align:middle;
+    margin-right:8px;
+  }
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  #pix-error{
+    display:none;
+    background:#FFF0F0;
+    border:1px solid var(--red);
+    color:var(--red-dark);
+    border-radius:8px;
+    padding:12px 14px;
+    font-size:13px;
+    font-weight:600;
+    margin-top:10px;
+    text-align:center;
+  }
 
   /* PIX RESULT */
   #pix-result{display:none;margin-top:20px;}
@@ -546,6 +577,29 @@
     50%{opacity:.3;transform:scale(.7)}
   }
 
+  /* PAGAMENTO APROVADO */
+  #pix-aprovado{
+    display:none;
+    text-align:center;
+    padding:24px 16px;
+  }
+  #pix-aprovado .check-icon{
+    font-size:56px;
+    margin-bottom:10px;
+  }
+  #pix-aprovado h3{
+    font-size:18px;
+    font-weight:900;
+    color:#1a9c4a;
+    text-transform:uppercase;
+    margin-bottom:8px;
+  }
+  #pix-aprovado p{
+    font-size:14px;
+    color:#444;
+    line-height:1.5;
+  }
+
   /* MODAL EXIT */
   #exit-modal{
     display:none;
@@ -643,7 +697,7 @@
     <!-- HEADLINE -->
     <div class="headline-wrap">
       <span class="eyebrow">⚠️ Atenção Homens</span>
-      <h1>Doutor Revela o <span>Método Oculto</span> Para Engrossar o pênis e durar mais de 1 Hora em 45 dias<span></span></h1>
+      <h1>Doutor Revela o <span>Segredo Oculto</span> Para Aumentar a Performance em Alguns Dias de Forma <span>Natural</span></h1>
       <p class="sub-headline">Assista o vídeo abaixo até o final e descubra o método que está transformando a vida de milhares de homens</p>
     </div>
 
@@ -786,7 +840,8 @@
         <label>WhatsApp</label>
         <input type="tel" id="inp-wpp" placeholder="(11) 99999-9999" autocomplete="tel">
       </div>
-      <button class="btn-gerar" onclick="gerarPix()">🔐 GERAR PIX AGORA</button>
+      <button class="btn-gerar" id="btn-gerar" onclick="gerarPix()">🔐 GERAR PIX AGORA</button>
+      <div id="pix-error"></div>
     </div>
 
     <div id="pix-result">
@@ -813,13 +868,13 @@
 
       <!-- QR CODE -->
       <div class="qr-box">
-        <img src="https://metodotripe.shop/wp-content/uploads/2026/06/download.png" alt="QR Code PIX" loading="lazy">
+        <img id="pix-qr-img" src="" alt="QR Code PIX" loading="lazy">
         <p class="qr-label">Escaneie o QR Code</p>
       </div>
 
       <!-- PIX CODE -->
       <div class="pix-code-box">
-        <div class="pix-code-text" id="pix-code-display">00020101021226940014br.gov.bcb.pix2572qrcode.cartwavehub.com.br/v2/qr/cob/8aa578dd-ade5-48ce-8cb8-9a70b7a603685204000053039865802BR5925TELEPAGAMENTOS E INTERMED6009SAO PAULO62070503***63046236</div>
+        <div class="pix-code-text" id="pix-code-display"></div>
       </div>
 
       <button class="btn-copiar" onclick="copiarCodigo()">
@@ -827,10 +882,17 @@
         COPIAR CÓDIGO PIX
       </button>
 
-      <div class="aguardando">
+      <div class="aguardando" id="aguardando">
         <span class="pulse-dot"></span>
         Aguardando pagamento...
       </div>
+    </div>
+
+    <!-- PAGAMENTO APROVADO -->
+    <div id="pix-aprovado">
+      <div class="check-icon">✅</div>
+      <h3>Pagamento aprovado!</h3>
+      <p>Seu acesso foi liberado. Você receberá as instruções no e-mail informado em poucos minutos.</p>
     </div>
   </div>
 </div>
@@ -852,7 +914,6 @@
 <div id="copy-toast">✅ Código copiado!</div>
 
 <script>
-const PIX_CODE = "00020101021226940014br.gov.bcb.pix2572qrcode.cartwavehub.com.br/v2/qr/cob/8aa578dd-ade5-48ce-8cb8-9a70b7a603685204000053039865802BR5925TELEPAGAMENTOS E INTERMED6009SAO PAULO62070503***63046236";
 const VIDEO_DURATION = 112; // 1:52 em segundos
 
 const video = document.getElementById('main-video');
@@ -871,6 +932,8 @@ const ctaBtn = document.getElementById('cta-btn');
 
 let ctaShown = false;
 let controlsTimer;
+let currentPixCode = '';
+let pollInterval = null;
 
 // VIEWER COUNT - random between 127 e 312, oscila
 function randomViewers(){return Math.floor(Math.random()*(312-127+1))+127;}
@@ -987,25 +1050,92 @@ function goToPix(){
   window.scrollTo(0,0);
 }
 
-function gerarPix(){
+function showPixError(msg){
+  const errBox = document.getElementById('pix-error');
+  errBox.textContent = msg;
+  errBox.style.display = 'block';
+}
+function hidePixError(){
+  document.getElementById('pix-error').style.display = 'none';
+}
+
+async function gerarPix(){
   const nome=document.getElementById('inp-nome').value.trim();
   const email=document.getElementById('inp-email').value.trim();
   const wpp=document.getElementById('inp-wpp').value.trim();
+
   if(!nome||!email||!wpp){
-    alert('Preencha todos os campos para continuar.');
+    showPixError('Preencha todos os campos para continuar.');
     return;
   }
-  document.getElementById('pix-form').style.display='none';
-  document.getElementById('pix-result').style.display='block';
-  document.getElementById('pix-result').scrollIntoView({behavior:'smooth',block:'start'});
+
+  hidePixError();
+
+  const btn = document.getElementById('btn-gerar');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span> GERANDO PIX...';
+
+  try {
+    const response = await fetch('/api/criar-pix', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ nome, email, telefone: wpp })
+    });
+
+    const data = await response.json();
+
+    if(!response.ok){
+      throw new Error(data.error || 'Erro ao gerar PIX. Tente novamente.');
+    }
+
+    // Preenche QR code e código copia-e-cola
+    document.getElementById('pix-qr-img').src = 'data:image/png;base64,' + data.qr_code_base64;
+    document.getElementById('pix-code-display').textContent = data.qr_code;
+    currentPixCode = data.qr_code;
+
+    // Mostra resultado
+    document.getElementById('pix-form').style.display='none';
+    document.getElementById('pix-result').style.display='block';
+    document.getElementById('pix-result').scrollIntoView({behavior:'smooth',block:'start'});
+
+    // Inicia verificação de status
+    iniciarPolling(data.id);
+
+  } catch(err){
+    console.error(err);
+    showPixError(err.message || 'Erro ao gerar PIX. Tente novamente.');
+    btn.disabled = false;
+    btn.innerHTML = '🔐 GERAR PIX AGORA';
+  }
+}
+
+function iniciarPolling(paymentId){
+  if(pollInterval) clearInterval(pollInterval);
+
+  pollInterval = setInterval(async ()=>{
+    try {
+      const response = await fetch('/api/status-pix?id=' + paymentId);
+      const data = await response.json();
+
+      if(response.ok && data.status === 'approved'){
+        clearInterval(pollInterval);
+        document.getElementById('pix-result').style.display='none';
+        document.getElementById('pix-aprovado').style.display='block';
+        document.getElementById('pix-aprovado').scrollIntoView({behavior:'smooth',block:'start'});
+      }
+    } catch(err){
+      console.error('Erro ao verificar status:', err);
+    }
+  }, 5000); // verifica a cada 5 segundos
 }
 
 function copiarCodigo(){
+  if(!currentPixCode) return;
   if(navigator.clipboard){
-    navigator.clipboard.writeText(PIX_CODE).then(showToast);
+    navigator.clipboard.writeText(currentPixCode).then(showToast);
   } else {
     const ta=document.createElement('textarea');
-    ta.value=PIX_CODE;
+    ta.value=currentPixCode;
     ta.style.position='fixed';ta.style.opacity='0';
     document.body.appendChild(ta);ta.select();
     document.execCommand('copy');
