@@ -719,6 +719,72 @@
   }
   #copy-toast.show{transform:translateX(-50%) translateY(0);}
 
+  /* ORDER BUMP */
+  .bump-wrap{margin:16px 0;}
+  .bump-card{
+    border:2.5px dashed var(--red);
+    border-radius:12px;
+    padding:14px;
+    background:#fff9f9;
+    cursor:pointer;
+    transition:border-color .2s,background .2s,box-shadow .2s;
+    user-select:none;
+  }
+  .bump-card.selected{
+    border-style:solid;
+    background:#fff0f0;
+    box-shadow:0 4px 16px rgba(232,0,13,.15);
+  }
+  .bump-label{
+    display:inline-block;
+    background:var(--red);
+    color:#fff;
+    font-size:10px;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    padding:3px 10px;
+    border-radius:3px;
+    margin-bottom:10px;
+  }
+  .bump-inner{display:flex;gap:12px;align-items:center;}
+  .bump-img{
+    width:72px;height:72px;
+    object-fit:cover;
+    border-radius:8px;
+    flex-shrink:0;
+    border:2px solid #f0e0e0;
+  }
+  .bump-info{flex:1;}
+  .bump-title{
+    font-size:14px;font-weight:900;
+    color:var(--black);text-transform:uppercase;
+    line-height:1.2;margin-bottom:4px;
+  }
+  .bump-desc{font-size:12px;color:#555;line-height:1.4;margin-bottom:6px;}
+  .bump-price{font-size:13px;font-weight:900;color:var(--red);}
+  .bump-price s{color:#bbb;font-weight:400;font-size:11px;margin-right:4px;}
+  .bump-check{
+    width:24px;height:24px;
+    border:2.5px solid #ccc;
+    border-radius:6px;
+    flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+    transition:all .2s;background:#fff;
+  }
+  .bump-card.selected .bump-check{background:var(--red);border-color:var(--red);}
+  .bump-check svg{width:14px;height:14px;fill:#fff;opacity:0;transition:opacity .2s;}
+  .bump-card.selected .bump-check svg{opacity:1;}
+  .bump-footer{margin-top:10px;font-size:11px;color:#888;text-align:center;font-weight:600;}
+  .bump-footer span{color:var(--red);}
+  .total-wrap{
+    display:flex;justify-content:space-between;align-items:center;
+    background:var(--gray-light);
+    border-radius:8px;padding:10px 14px;margin:12px 0;
+    font-size:14px;font-weight:700;color:var(--black);
+  }
+  .total-wrap .total-val{color:var(--red);font-size:16px;font-weight:900;}
+
   /* Scrollbar hide for mobile */
   ::-webkit-scrollbar{width:4px;}
   ::-webkit-scrollbar-thumb{background:#ddd;border-radius:999px;}
@@ -733,7 +799,7 @@
     <!-- HEADLINE -->
     <div class="headline-wrap">
       <span class="eyebrow">⚠️ Atenção Homens</span>
-      <h1>Doutor Revela 3 <span>Exercicios Ocultos</span> Para Engrossar o Pênis é Durar Mais na Cama<span></span></h1>
+      <h1>Doutor Revela o <span>Segredo Oculto</span> Para Aumentar a Performance em Alguns Dias de Forma <span>Natural</span></h1>
       <p class="sub-headline">Assista o vídeo abaixo até o final e descubra o método que está transformando a vida de milhares de homens</p>
     </div>
 
@@ -813,27 +879,27 @@
     <div class="section-title">O que estão <span>dizendo</span></div>
     <div class="comments">
       <div class="comment">
-        <div class="avatar"><img src="https://metodotripe.shop/wp-content/uploads/2026/06/f6f75b3cecb0c630eaa4efefccf2109f.jpg" alt="Marcos T."></div>
+        <div class="avatar"><img src="https://protocolotripe.online/wp-content/uploads/2026/02/8b6d9a93-aff4-4403-a0dc-860ce48f3c54.png" alt="Marcos T."></div>
         <div class="comment-body">
           <div class="comment-name">Marcos T. — SP</div>
           <div class="stars">★★★★★</div>
-          <div class="comment-text">Nunca imaginei que algo tão simples pudesse fazer tanta diferença. Em menos de 2 semanas minha ferramenta dobrou a grossura e so gozo quando quero esses exercicios são um milagre.</div>
+          <div class="comment-text">Nunca imaginei que algo tão simples pudesse fazer tanta diferença. Em menos de 2 semanas já senti o resultado.</div>
         </div>
       </div>
       <div class="comment">
-        <div class="avatar"><img src="https://metodotripe.shop/wp-content/uploads/2026/04/dc1c19211dcd14aa6b32d0024cd4d4d1.jpg" alt="Roberto A."></div>
+        <div class="avatar"><img src="https://protocolotripe.online/wp-content/uploads/2026/02/8b6d9a93-aff4-4403-a0dc-860ce48f3c54.png" alt="Roberto A."></div>
         <div class="comment-body">
           <div class="comment-name">Roberto A. — RJ</div>
           <div class="stars">★★★★★</div>
-          <div class="comment-text">O método do Doutor é diferente de tudo que já vi. Fiz os exercícios que ele ensina minha ferramenta fica 45 miutos igual pedra finalmente uma solução de respeito.</div>
+          <div class="comment-text">O método do Doutor é diferente de tudo que já vi. Fiz os exercícios que ele ensina e o resultado foi impressionante.</div>
         </div>
       </div>
       <div class="comment">
-        <div class="avatar"><img src="https://metodotripe.shop/wp-content/uploads/2026/04/0100.jpg" alt="João P."></div>
+        <div class="avatar"><img src="https://protocolotripe.online/wp-content/uploads/2026/02/8b6d9a93-aff4-4403-a0dc-860ce48f3c54.png" alt="João P."></div>
         <div class="comment-body">
           <div class="comment-name">João P. — MG</div>
           <div class="stars">★★★★★</div>
-          <div class="comment-text">Minha esposa reclamava que meu peru era um pouco fino apos 36 dias dos exercicios hoje evito algumas posições pois esta machucando ela isso mudou meu relacionamento.</div>
+          <div class="comment-text">Minha autoconfiança voltou completamente. Recomendo para qualquer homem que quer resultados de verdade.</div>
         </div>
       </div>
     </div>
@@ -884,6 +950,31 @@
         <label>WhatsApp</label>
         <input type="tel" id="inp-wpp" placeholder="(11) 99999-9999" autocomplete="tel">
       </div>
+      <!-- ORDER BUMP -->
+      <div class="bump-wrap">
+        <div class="bump-card" id="bump-card" onclick="toggleBump()">
+          <div class="bump-label">⚡ Oferta especial — Adicione ao seu pedido</div>
+          <div class="bump-inner">
+            <img class="bump-img" src="https://metodotripe.shop/wp-content/uploads/2026/06/ChatGPT-Image-15-de-jun.-de-2026-20_31_49.png" alt="Método Bicarbonato">
+            <div class="bump-info">
+              <div class="bump-title">Método Bicarbonato</div>
+              <div class="bump-desc">7 ingredientes secretos que irão te deixar grande — resultado garantido</div>
+              <div class="bump-price"><s>R$ 19,90</s> apenas R$ 4,97</div>
+            </div>
+            <div class="bump-check">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+          </div>
+          <div class="bump-footer">Clique no card para <span>adicionar ao seu pedido</span></div>
+        </div>
+      </div>
+
+      <!-- TOTAL DINÂMICO -->
+      <div class="total-wrap">
+        <span>Total a pagar:</span>
+        <span class="total-val" id="total-display">R$ 9,90</span>
+      </div>
+
       <button class="btn-gerar" id="btn-gerar" onclick="gerarPix()">🔓 LIBERAR TÉCNICAS COMPLETAS — R$ 9,90</button>
       <div id="pix-error"></div>
     </div>
@@ -1093,6 +1184,27 @@ function hidePixError(){
   document.getElementById('pix-error').style.display = 'none';
 }
 
+const PRECO_BASE = 9.90;
+const PRECO_BUMP = 4.97;
+let bumpSelecionado = false;
+
+function toggleBump(){
+  bumpSelecionado = !bumpSelecionado;
+  const card = document.getElementById('bump-card');
+  const total = document.getElementById('total-display');
+  const btn = document.getElementById('btn-gerar');
+  if(bumpSelecionado){
+    card.classList.add('selected');
+    const totalVal = (PRECO_BASE + PRECO_BUMP).toFixed(2).replace('.',',');
+    total.textContent = 'R$ ' + totalVal;
+    btn.innerHTML = '🔓 LIBERAR TÉCNICAS COMPLETAS — R$ ' + totalVal;
+  } else {
+    card.classList.remove('selected');
+    total.textContent = 'R$ 9,90';
+    btn.innerHTML = '🔓 LIBERAR TÉCNICAS COMPLETAS — R$ 9,90';
+  }
+}
+
 async function gerarPix(){
   const nome=document.getElementById('inp-nome').value.trim();
   const email=document.getElementById('inp-email').value.trim();
@@ -1113,7 +1225,7 @@ async function gerarPix(){
     const response = await fetch('/api/criar-pix', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ nome, email, telefone: wpp })
+      body: JSON.stringify({ nome, email, telefone: wpp, bump: bumpSelecionado })
     });
 
     const data = await response.json();
