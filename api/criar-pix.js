@@ -2,16 +2,17 @@
 // Function serverless do Vercel: cria um pagamento PIX dinâmico via Mercado Pago
 // e retorna o QR Code + código copia-e-cola para o frontend.
 
+const PRECO_BASE = 9.90;
+const PRECO_BUMP = 4.97;
+
 export default async function handler(req, res) {
-  // Só aceita POST
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Método não permitido' });
   }
 
   try {
-    const { nome, email, telefone } = req.body;
+    const { nome, email, telefone, bump } = req.body;
 
-    // Validação básica
     if (!nome || !email) {
       return res.status(400).json({ error: 'Nome e e-mail são obrigatórios' });
     }
@@ -22,17 +23,25 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: 'Access Token não configurado no servidor' });
     }
 
-    // Separa nome em primeiro e último (Mercado Pago pede first_name/last_name)
+    // Calcula valor total no servidor (nunca confiar no valor do frontend)
+    const totalAmount = parseFloat((PRECO_BASE + (bump ? PRECO_BUMP : 0)).toFixed(2));
+
+    // Descrição lista os produtos incluídos
+    const produtos = ['Método Tripê'];
+    if (bump) produtos.push('Método Bicarbonato');
+    const description = produtos.join(' + ');
+
+    // Separa nome em primeiro e último
     const partesNome = nome.trim().split(' ');
     const firstName = partesNome[0];
     const lastName = partesNome.length > 1 ? partesNome.slice(1).join(' ') : firstName;
 
-    // Chave de idempotência única (evita pagamentos duplicados em caso de retry)
+    // Chave de idempotência única
     const idempotencyKey = `${Date.now()}-${Math.random().toString(36).substring(2, 10)}`;
 
     const paymentData = {
-      transaction_amount: 9.90,
-      description: 'Acesso ao conteúdo - Método Tripê',
+      transaction_amount: totalAmount,
+      description: description,
       payment_method_id: 'pix',
       payer: {
         email: email,
@@ -61,7 +70,6 @@ export default async function handler(req, res) {
       });
     }
 
-    // Extrai os dados do PIX da resposta
     const transactionData = data.point_of_interaction?.transaction_data;
 
     if (!transactionData) {
@@ -73,6 +81,8 @@ export default async function handler(req, res) {
       status: data.status,
       qr_code: transactionData.qr_code,
       qr_code_base64: transactionData.qr_code_base64,
+      total: totalAmount,
+      produtos: produtos,
     });
 
   } catch (err) {
