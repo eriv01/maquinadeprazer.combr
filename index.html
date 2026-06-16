@@ -120,6 +120,7 @@
     box-shadow:0 8px 32px rgba(0,0,0,.25);
     aspect-ratio:16/9;
     width:100%;
+    border:3px solid var(--red);
   }
   #main-video{
     width:100%;
@@ -786,6 +787,38 @@
   }
   .total-wrap .total-val{color:var(--red);font-size:16px;font-weight:900;}
 
+  .gatilhos-wrap{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+    margin:14px 0 4px;
+    background:var(--gray-light);
+    border-radius:10px;
+    padding:12px 14px;
+  }
+  .gatilho-item{
+    font-size:12px;
+    font-weight:600;
+    color:#444;
+    display:flex;
+    gap:6px;
+    align-items:flex-start;
+    line-height:1.4;
+  }
+  .gatilho-item span{flex:1;}
+
+  #exit-modal-checkout{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.75);
+    z-index:9999;
+    align-items:center;
+    justify-content:center;
+    padding:16px;
+  }
+  #exit-modal-checkout.show{display:flex;}
+
   /* Scrollbar hide for mobile */
   ::-webkit-scrollbar{width:4px;}
   ::-webkit-scrollbar-thumb{background:#ddd;border-radius:999px;}
@@ -800,8 +833,8 @@
     <!-- HEADLINE -->
     <div class="headline-wrap">
       <span class="eyebrow">⚠️ Atenção Homens</span>
-      <h1>Doutor Revela 3 <span>Massagens Ocultas</span> Para Engrossar o Pênis é Durar Mais na Cama<span></span></h1>
-      <p class="sub-headline">Assista o vídeo abaixo até o final e descubra Antes que seja removido da internet</p>
+      <h1>Doutor Revela o <span>Segredo Oculto</span> Para Aumentar a Performance em Alguns Dias de Forma <span>Natural</span></h1>
+      <p class="sub-headline">Assista o vídeo abaixo até o final e descubra o método que está transformando a vida de milhares de homens</p>
     </div>
 
     <!-- TRUST STRIP -->
@@ -823,7 +856,7 @@
     <!-- VIDEO PLAYER -->
     <div class="player-wrap" id="player-wrap">
       <video id="main-video" preload="metadata" playsinline webkit-playsinline>
-        <source src="https://metodotripe.shop/wp-content/uploads/2026/06/vsl1.mp4" type="video/mp4">
+        <source src="https://metodotripe.shop/wp-content/uploads/2026/06/vsl1-1_kzlROg57.mp4" type="video/mp4">
       </video>
 
       <!-- PLAY OVERLAY -->
@@ -848,7 +881,7 @@
           <button class="ctrl-btn" id="play-btn" title="Play/Pause">
             <svg id="play-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
           </button>
-          <span class="time-display" id="time-display">0:00 / 1:52</span>
+          <span class="time-display" id="time-display">0:00 / 2:02</span>
           <div class="vol-wrap">
             <button class="ctrl-btn" id="mute-btn" title="Mudo">
               <svg id="vol-icon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
@@ -880,15 +913,15 @@
     <div class="section-title">O que estão <span>dizendo</span></div>
     <div class="comments">
       <div class="comment">
-        <div class="avatar"><img src="https://metodotripe.shop/wp-content/uploads/2026/06/f6f75b3cecb0c630eaa4efefccf2109f.jpg" alt="Marcos T."></div>
+        <div class="avatar"><img src="https://protocolotripe.online/wp-content/uploads/2026/02/8b6d9a93-aff4-4403-a0dc-860ce48f3c54.png" alt="Marcos T."></div>
         <div class="comment-body">
           <div class="comment-name">Marcos T. — SP</div>
           <div class="stars">★★★★★</div>
-          <div class="comment-text">Desacreditava dessas coisas de internet decidie testar o metodo engrossei a ferramenta e de quebra ganhei 4 centimetros a mais.</div>
+          <div class="comment-text">Nunca imaginei que algo tão simples pudesse fazer tanta diferença. Em menos de 2 semanas já senti o resultado.</div>
         </div>
       </div>
       <div class="comment">
-        <div class="avatar"><img src="https://metodotripe.shop/wp-content/uploads/2026/06/CjKzp-o4_400x400.jpg" alt="Roberto A."></div>
+        <div class="avatar"><img src="https://protocolotripe.online/wp-content/uploads/2026/02/8b6d9a93-aff4-4403-a0dc-860ce48f3c54.png" alt="Roberto A."></div>
         <div class="comment-body">
           <div class="comment-name">Roberto A. — RJ</div>
           <div class="stars">★★★★★</div>
@@ -896,11 +929,11 @@
         </div>
       </div>
       <div class="comment">
-        <div class="avatar"><img src="https://metodotripe.shop/wp-content/uploads/2026/06/5bd1ed354dd667063e2fafd36473dd27.jpg" alt="João P."></div>
+        <div class="avatar"><img src="https://protocolotripe.online/wp-content/uploads/2026/02/8b6d9a93-aff4-4403-a0dc-860ce48f3c54.png" alt="João P."></div>
         <div class="comment-body">
           <div class="comment-name">João P. — MG</div>
           <div class="stars">★★★★★</div>
-          <div class="comment-text">Minha Mulher Reclamava do meu Peru fino Hoje ela implora pra eu não tirar de dentro dobrou a grossura e fica de pe igual pedra recomendo.</div>
+          <div class="comment-text">Minha autoconfiança voltou completamente. Recomendo para qualquer homem que quer resultados de verdade.</div>
         </div>
       </div>
     </div>
@@ -951,23 +984,51 @@
         <label>WhatsApp</label>
         <input type="tel" id="inp-wpp" placeholder="(11) 99999-9999" autocomplete="tel">
       </div>
-      <!-- ORDER BUMP -->
+      <!-- ORDER BUMP 1 -->
       <div class="bump-wrap">
-        <div class="bump-card" id="bump-card" onclick="toggleBump()">
+        <div class="bump-card" id="bump-card" onclick="toggleBump('bump1')">
           <div class="bump-label">⚡ Oferta especial — Adicione ao seu pedido</div>
           <div class="bump-inner">
             <img class="bump-img" src="https://metodotripe.shop/wp-content/uploads/2026/06/ChatGPT-Image-15-de-jun.-de-2026-20_31_49.png" alt="Método Bicarbonato">
             <div class="bump-info">
               <div class="bump-title">Método Bicarbonato</div>
-              <div class="bump-desc">A Receita dos Atores Para Crescer o Pênis — Em casa em 45 Dias</div>
+              <div class="bump-desc">7 ingredientes secretos que irão te deixar grande — resultado garantido</div>
               <div class="bump-price"><s>R$ 19,90</s> apenas R$ 4,97</div>
             </div>
-            <div class="bump-check">
+            <div class="bump-check" id="bump-check-1">
               <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
           </div>
           <div class="bump-footer">Clique no card para <span>adicionar ao seu pedido</span></div>
         </div>
+      </div>
+
+      <!-- ORDER BUMP 2 -->
+      <div class="bump-wrap">
+        <div class="bump-card" id="bump-card-2" onclick="toggleBump('bump2')">
+          <div class="bump-label">🔥 Mais vendido — Aproveite enquanto há vagas</div>
+          <div class="bump-inner">
+            <img class="bump-img" src="https://metodotripe.shop/wp-content/uploads/2026/06/ChatGPT-Image-16-de-jun.-de-2026-19_56_13.png" alt="Teza Grande">
+            <div class="bump-info">
+              <div class="bump-title">Teza Grande</div>
+              <div class="bump-desc">Seja o homem da casa de uma vez por todas — resultado real e definitivo</div>
+              <div class="bump-price"><s>R$ 19,90</s> apenas R$ 4,97</div>
+            </div>
+            <div class="bump-check" id="bump-check-2">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+          </div>
+          <div class="bump-footer">Clique no card para <span>adicionar ao seu pedido</span></div>
+        </div>
+      </div>
+
+      <!-- GATILHOS DE ESCASSEZ -->
+      <div class="gatilhos-wrap">
+        <div class="gatilho-item">🔒 <span>Compra 100% segura — criptografia SSL</span></div>
+        <div class="gatilho-item">⚡ <span>Acesso imediato após confirmação do PIX</span></div>
+        <div class="gatilho-item">🛡️ <span>Garantia de 7 dias — devolução sem perguntas</span></div>
+        <div class="gatilho-item">👨‍⚕️ <span>Método validado por especialistas — 100% natural</span></div>
+        <div class="gatilho-item">🔥 <span>+47.000 homens já transformaram sua vida</span></div>
       </div>
 
       <!-- TOTAL DINÂMICO -->
@@ -1033,7 +1094,7 @@
   </div>
 </div>
 
-<!-- EXIT MODAL -->
+<!-- EXIT MODAL VSL -->
 <div id="exit-modal">
   <div class="modal-box">
     <div class="modal-icon">⚠️</div>
@@ -1046,11 +1107,24 @@
   </div>
 </div>
 
+<!-- EXIT MODAL CHECKOUT -->
+<div id="exit-modal-checkout">
+  <div class="modal-box">
+    <div class="modal-icon">🔥</div>
+    <h3>Sua oferta vai expirar!</h3>
+    <p>Você está prestes a perder acesso ao <strong>Método Tripê por apenas R$ 9,90</strong>.<br><br>Esta condição de lançamento não estará disponível se você sair agora. Centenas de homens já garantiram o acesso.</p>
+    <div class="modal-btns">
+      <button class="btn-modal-stay" onclick="closeModalCheckout()">✅ QUERO GARANTIR MINHA OFERTA</button>
+      <button class="btn-modal-leave" onclick="closeModalCheckout()">Perder minha oferta</button>
+    </div>
+  </div>
+</div>
+
 <!-- COPY TOAST -->
 <div id="copy-toast">✅ Código copiado!</div>
 
 <script>
-const VIDEO_DURATION = 112; // 1:52 em segundos
+const VIDEO_DURATION = 122; // 2:02 em segundos
 
 const video = document.getElementById('main-video');
 const playerWrap = document.getElementById('player-wrap');
@@ -1116,7 +1190,7 @@ playerWrap.addEventListener('touchstart',showControlsTemp,{passive:true});
 video.addEventListener('timeupdate',()=>{
   const pct=(video.currentTime/VIDEO_DURATION)*100;
   progressFill.style.width=Math.min(pct,100)+'%';
-  timeDisplay.textContent=fmtTime(video.currentTime)+' / 1:52';
+  timeDisplay.textContent=fmtTime(video.currentTime)+' / 2:02';
 
   // Show CTA after video ends (1:52)
   if(video.currentTime>=VIDEO_DURATION && !ctaShown){
@@ -1186,24 +1260,35 @@ function hidePixError(){
 }
 
 const PRECO_BASE = 9.90;
-const PRECO_BUMP = 4.97;
-let bumpSelecionado = false;
+const PRECO_BUMP1 = 4.97;
+const PRECO_BUMP2 = 4.97;
+let bump1 = false;
+let bump2 = false;
 
-function toggleBump(){
-  bumpSelecionado = !bumpSelecionado;
-  const card = document.getElementById('bump-card');
-  const total = document.getElementById('total-display');
+function calcTotal(){
+  return parseFloat((PRECO_BASE + (bump1 ? PRECO_BUMP1 : 0) + (bump2 ? PRECO_BUMP2 : 0)).toFixed(2));
+}
+
+function atualizarTotalUI(){
+  const total = calcTotal();
+  const totalStr = total.toFixed(2).replace('.',',');
+  document.getElementById('total-display').textContent = 'R$ ' + totalStr;
   const btn = document.getElementById('btn-gerar');
-  if(bumpSelecionado){
-    card.classList.add('selected');
-    const totalVal = (PRECO_BASE + PRECO_BUMP).toFixed(2).replace('.',',');
-    total.textContent = 'R$ ' + totalVal;
-    btn.innerHTML = '🔓 LIBERAR TÉCNICAS COMPLETAS — R$ ' + totalVal;
+  if(!btn.disabled) btn.innerHTML = '🔓 LIBERAR TÉCNICAS COMPLETAS — R$ ' + totalStr;
+}
+
+function toggleBump(qual){
+  if(qual === 'bump1'){
+    bump1 = !bump1;
+    const card = document.getElementById('bump-card');
+    const check = document.getElementById('bump-check-1');
+    card.classList.toggle('selected', bump1);
   } else {
-    card.classList.remove('selected');
-    total.textContent = 'R$ 9,90';
-    btn.innerHTML = '🔓 LIBERAR TÉCNICAS COMPLETAS — R$ 9,90';
+    bump2 = !bump2;
+    const card = document.getElementById('bump-card-2');
+    card.classList.toggle('selected', bump2);
   }
+  atualizarTotalUI();
 }
 
 async function gerarPix(){
@@ -1226,7 +1311,7 @@ async function gerarPix(){
     const response = await fetch('/api/criar-pix', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ nome, email, telefone: wpp, bump: bumpSelecionado })
+      body: JSON.stringify({ nome, email, telefone: wpp, bump1, bump2 })
     });
 
     const data = await response.json();
@@ -1297,22 +1382,31 @@ function showToast(){
   setTimeout(()=>t.classList.remove('show'),2500);
 }
 
-// EXIT INTENT
 let exitShown=false;
+let exitCheckoutShown=false;
+
 function showExitModal(){
-  if(!exitShown){
-    exitShown=true;
-    document.getElementById('exit-modal').classList.add('show');
+  const noCheckout = document.getElementById('pix-page').style.display === 'block';
+  if(noCheckout){
+    if(!exitCheckoutShown){
+      exitCheckoutShown=true;
+      document.getElementById('exit-modal-checkout').classList.add('show');
+    }
+  } else {
+    if(!exitShown){
+      exitShown=true;
+      if(!video.paused) pauseVideo();
+      document.getElementById('exit-modal').classList.add('show');
+    }
   }
 }
 function closeModal(){
   document.getElementById('exit-modal').classList.remove('show');
-  if(!video.paused&&document.getElementById('vsl-page').style.display!=='none'){
-    // resume
-  }
-  // scroll back to video
   const vp=document.getElementById('player-wrap');
   if(vp) vp.scrollIntoView({behavior:'smooth',block:'center'});
+}
+function closeModalCheckout(){
+  document.getElementById('exit-modal-checkout').classList.remove('show');
 }
 
 // Desktop: mouseleave
