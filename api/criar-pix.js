@@ -1,9 +1,7 @@
 // /api/criar-pix.js
-// Function serverless do Vercel: cria um pagamento PIX dinâmico via Mercado Pago
-// e retorna o QR Code + código copia-e-cola para o frontend.
-
 const PRECO_BASE = 9.90;
-const PRECO_BUMP = 4.97;
+const PRECO_BUMP1 = 4.97; // Método Bicarbonato
+const PRECO_BUMP2 = 4.97; // Teza Grande
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -11,32 +9,30 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { nome, email, telefone, bump } = req.body;
+    const { nome, email, telefone, bump1, bump2 } = req.body;
 
     if (!nome || !email) {
       return res.status(400).json({ error: 'Nome e e-mail são obrigatórios' });
     }
 
     const ACCESS_TOKEN = process.env.MP_ACCESS_TOKEN;
-
     if (!ACCESS_TOKEN) {
       return res.status(500).json({ error: 'Access Token não configurado no servidor' });
     }
 
-    // Calcula valor total no servidor (nunca confiar no valor do frontend)
-    const totalAmount = parseFloat((PRECO_BASE + (bump ? PRECO_BUMP : 0)).toFixed(2));
+    // Calcula valor total no servidor
+    const totalAmount = parseFloat((PRECO_BASE + (bump1 ? PRECO_BUMP1 : 0) + (bump2 ? PRECO_BUMP2 : 0)).toFixed(2));
 
-    // Descrição lista os produtos incluídos
+    // Descrição com produtos incluídos
     const produtos = ['Método Tripê'];
-    if (bump) produtos.push('Método Bicarbonato');
+    if (bump1) produtos.push('Método Bicarbonato');
+    if (bump2) produtos.push('Teza Grande');
     const description = produtos.join(' + ');
 
-    // Separa nome em primeiro e último
     const partesNome = nome.trim().split(' ');
     const firstName = partesNome[0];
     const lastName = partesNome.length > 1 ? partesNome.slice(1).join(' ') : firstName;
 
-    // Chave de idempotência única
     const idempotencyKey = `${Date.now()}-${Math.random().toString(36).substring(2, 10)}`;
 
     const paymentData = {
@@ -64,14 +60,10 @@ export default async function handler(req, res) {
 
     if (!response.ok) {
       console.error('Erro Mercado Pago:', data);
-      return res.status(response.status).json({
-        error: 'Erro ao criar pagamento PIX',
-        details: data,
-      });
+      return res.status(response.status).json({ error: 'Erro ao criar pagamento PIX', details: data });
     }
 
     const transactionData = data.point_of_interaction?.transaction_data;
-
     if (!transactionData) {
       return res.status(500).json({ error: 'Resposta do Mercado Pago sem dados de PIX' });
     }
