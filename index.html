@@ -1242,6 +1242,7 @@ document.getElementById('fs-btn').addEventListener('click',()=>{
 
 // PIX FUNCTIONS
 function goToPix(){
+  video.pause();
   document.getElementById('vsl-page').style.display='none';
   document.getElementById('pix-page').style.display='block';
   window.scrollTo(0,0);
