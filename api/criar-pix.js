@@ -1,7 +1,7 @@
 // /api/criar-pix.js
 const PRECO_BASE = 9.90;
-const PRECO_BUMP1 = 4.97; // Método Bicarbonato
-const PRECO_BUMP2 = 4.97; // Teza Grande
+const PRECO_BUMP1 = 4.97;
+const PRECO_BUMP2 = 4.97;
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -9,10 +9,15 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { nome, email, telefone, bump1, bump2 } = req.body;
+    const { nome, email, telefone, cpf, bump1, bump2 } = req.body;
 
-    if (!nome || !email) {
-      return res.status(400).json({ error: 'Nome e e-mail são obrigatórios' });
+    if (!nome || !email || !cpf) {
+      return res.status(400).json({ error: 'Nome, e-mail e CPF são obrigatórios' });
+    }
+
+    const cpfLimpo = cpf.replace(/\D/g, '');
+    if (cpfLimpo.length !== 11) {
+      return res.status(400).json({ error: 'CPF inválido' });
     }
 
     const ACCESS_TOKEN = process.env.MP_ACCESS_TOKEN;
@@ -20,10 +25,8 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: 'Access Token não configurado no servidor' });
     }
 
-    // Calcula valor total no servidor
     const totalAmount = parseFloat((PRECO_BASE + (bump1 ? PRECO_BUMP1 : 0) + (bump2 ? PRECO_BUMP2 : 0)).toFixed(2));
 
-    // Descrição com produtos incluídos
     const produtos = ['Método Tripê'];
     if (bump1) produtos.push('Método Bicarbonato');
     if (bump2) produtos.push('Teza Grande');
@@ -43,6 +46,10 @@ export default async function handler(req, res) {
         email: email,
         first_name: firstName,
         last_name: lastName,
+        identification: {
+          type: 'CPF',
+          number: cpfLimpo,
+        },
       },
     };
 
