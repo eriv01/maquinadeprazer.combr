@@ -8,55 +8,19 @@
 <style>
   *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   :root{
-    --red:#E8000D;
-    --red-dark:#B50009;
-    --red-light:#FF1A24;
-    --white:#FFFFFF;
-    --gray-light:#F7F7F7;
-    --gray:#888;
-    --black:#111;
-    --pulse-red:#E8000D;
+    --red:#E8000D;--red-dark:#B50009;--red-light:#FF1A24;
+    --white:#FFFFFF;--gray-light:#F7F7F7;--gray:#888;--black:#111;
   }
   html{font-size:16px;scroll-behavior:smooth}
-  body{
-    background:#fff;
-    color:var(--black);
-    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
-    min-height:100vh;
-    overflow-x:hidden;
-  }
+  body{background:#fff;color:var(--black);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;min-height:100vh;overflow-x:hidden;}
 
-  /* COUNTDOWN BAR */
-  #top-bar{
-    background:var(--red);
-    color:#fff;
-    text-align:center;
-    padding:10px 12px;
-    font-size:13px;
-    font-weight:700;
-    letter-spacing:.3px;
-    position:sticky;
-    top:0;
-    z-index:999;
-    box-shadow:0 2px 8px rgba(232,0,13,.4);
-  }
-  .dot-live{
-    width:8px;height:8px;
-    border-radius:50%;
-    background:#fff;
-    display:inline-block;
-    animation:blink 1s infinite;
-  }
+  #top-bar{background:var(--red);color:#fff;text-align:center;padding:10px 12px;font-size:13px;font-weight:700;letter-spacing:.3px;position:sticky;top:0;z-index:999;box-shadow:0 2px 8px rgba(232,0,13,.4);}
+  .dot-live{width:8px;height:8px;border-radius:50%;background:#fff;display:inline-block;animation:blink 1s infinite;}
   @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
 
   .main{max-width:860px;margin:0 auto;padding:0 12px 40px;}
-
   .headline-wrap{padding:22px 8px 14px;text-align:center;}
-  .eyebrow{
-    display:inline-block;background:var(--red);color:#fff;
-    font-size:11px;font-weight:800;text-transform:uppercase;
-    letter-spacing:1.5px;padding:4px 12px;border-radius:3px;margin-bottom:10px;
-  }
+  .eyebrow{display:inline-block;background:var(--red);color:#fff;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;padding:4px 12px;border-radius:3px;margin-bottom:10px;}
   h1{font-size:clamp(20px,5.5vw,34px);font-weight:900;line-height:1.18;color:var(--black);text-align:center;text-transform:uppercase;}
   h1 span{color:var(--red);}
   .sub-headline{margin-top:8px;font-size:clamp(13px,3.5vw,16px);color:#444;font-weight:500;line-height:1.5;}
@@ -65,18 +29,10 @@
   .trust-item{display:flex;align-items:center;gap:4px;}
   .trust-item svg{width:14px;height:14px;fill:var(--red);}
 
-  .player-wrap{
-    position:relative;background:#000;border-radius:8px;overflow:hidden;
-    box-shadow:0 8px 32px rgba(0,0,0,.25);aspect-ratio:16/9;width:100%;border:3px solid var(--red);
-  }
+  .player-wrap{position:relative;background:#000;border-radius:8px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.25);aspect-ratio:16/9;width:100%;border:3px solid var(--red);}
   #main-video{width:100%;height:100%;display:block;object-fit:cover;}
 
-  .controls{
-    position:absolute;bottom:0;left:0;right:0;
-    background:linear-gradient(transparent,rgba(0,0,0,.85));
-    padding:28px 12px 10px;display:flex;flex-direction:column;gap:6px;
-    opacity:0;transition:opacity .25s;
-  }
+  .controls{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.85));padding:28px 12px 10px;display:flex;flex-direction:column;gap:6px;opacity:0;transition:opacity .25s;}
   .player-wrap:hover .controls,.player-wrap.show-controls .controls{opacity:1;}
 
   .progress-wrap{position:relative;height:5px;background:rgba(255,255,255,.25);border-radius:999px;cursor:pointer;}
@@ -93,46 +49,22 @@
   .vol-slider::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;border-radius:50%;background:#fff;cursor:pointer;}
   .fullscreen-btn{margin-left:auto;}
 
-  #play-overlay{
-    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-    background:rgba(0,0,0,.35);cursor:pointer;transition:background .2s;
-  }
+  #play-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.35);cursor:pointer;transition:background .2s;}
   #play-overlay:hover{background:rgba(0,0,0,.2);}
   #play-overlay svg{width:68px;height:68px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5));}
   #play-overlay.hidden{display:none;}
-
-  #pause-overlay{
-    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-    background:rgba(0,0,0,.0);cursor:pointer;opacity:0;transition:opacity .2s;
-  }
+  #pause-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.0);cursor:pointer;opacity:0;transition:opacity .2s;}
   #pause-overlay.show{opacity:1;background:rgba(0,0,0,.25);}
 
   #cta-btn{display:none;width:100%;margin:18px auto 0;max-width:500px;}
-  #cta-btn button{
-    width:100%;background:linear-gradient(135deg,var(--red),var(--red-dark));color:#fff;border:none;
-    border-radius:8px;padding:18px 24px;font-size:clamp(17px,4.5vw,22px);font-weight:900;
-    text-transform:uppercase;letter-spacing:.5px;cursor:pointer;
-    box-shadow:0 4px 20px rgba(232,0,13,.45);animation:pulse-btn 2s infinite;
-    position:relative;overflow:hidden;
-  }
-  #cta-btn button::after{
-    content:'';position:absolute;inset:0;
-    background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);
-    animation:shine 2.5s infinite;
-  }
+  #cta-btn button{width:100%;background:linear-gradient(135deg,var(--red),var(--red-dark));color:#fff;border:none;border-radius:8px;padding:18px 24px;font-size:clamp(17px,4.5vw,22px);font-weight:900;text-transform:uppercase;letter-spacing:.5px;cursor:pointer;box-shadow:0 4px 20px rgba(232,0,13,.45);animation:pulse-btn 2s infinite;position:relative;overflow:hidden;}
+  #cta-btn button::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);animation:shine 2.5s infinite;}
   @keyframes shine{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
-  @keyframes pulse-btn{
-    0%,100%{box-shadow:0 4px 20px rgba(232,0,13,.45),0 0 0 0 rgba(232,0,13,.3)}
-    50%{box-shadow:0 4px 28px rgba(232,0,13,.65),0 0 0 10px rgba(232,0,13,0)}
-  }
+  @keyframes pulse-btn{0%,100%{box-shadow:0 4px 20px rgba(232,0,13,.45),0 0 0 0 rgba(232,0,13,.3)}50%{box-shadow:0 4px 28px rgba(232,0,13,.65),0 0 0 10px rgba(232,0,13,0)}}
   .cta-sub{text-align:center;font-size:11px;color:#888;margin-top:6px;}
   .cta-sub span{color:var(--red);font-weight:700;}
 
-  .urgency-strip{
-    background:var(--gray-light);border-left:4px solid var(--red);border-radius:0 6px 6px 0;
-    padding:10px 14px;margin:16px 0;font-size:13px;color:#333;font-weight:600;
-    display:flex;align-items:center;gap:8px;
-  }
+  .urgency-strip{background:var(--gray-light);border-left:4px solid var(--red);border-radius:0 6px 6px 0;padding:10px 14px;margin:16px 0;font-size:13px;color:#333;font-weight:600;display:flex;align-items:center;gap:8px;}
   .urgency-strip svg{width:18px;height:18px;fill:var(--red);flex-shrink:0;}
 
   .section-title{font-size:clamp(16px,4vw,20px);font-weight:900;text-align:center;margin:24px 0 14px;text-transform:uppercase;}
@@ -155,10 +87,8 @@
 
   /* PIX PAGE */
   #pix-page{display:none;min-height:100vh;background:#fff;}
-
   .checkout-banner{width:100%;max-width:860px;margin:0 auto;aspect-ratio:1344/896;overflow:hidden;background:var(--gray-light);}
   .checkout-banner img{width:100%;height:100%;display:block;object-fit:cover;object-position:center;}
-
   .pix-header{background:var(--red);color:#fff;text-align:center;padding:16px 12px;}
   .pix-header h2{font-size:clamp(16px,4.5vw,22px);font-weight:900;text-transform:uppercase;}
   .pix-header p{font-size:13px;margin-top:4px;opacity:.9;}
@@ -166,10 +96,7 @@
   /* STEPPER */
   .stepper{display:flex;align-items:center;justify-content:center;gap:0;margin:18px 0 20px;}
   .step-item{display:flex;flex-direction:column;align-items:center;gap:4px;position:relative;}
-  .step-circle{
-    width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-    font-size:13px;font-weight:900;border:2px solid #ddd;background:#fff;color:#bbb;transition:all .3s;z-index:1;
-  }
+  .step-circle{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;border:2px solid #ddd;background:#fff;color:#bbb;transition:all .3s;z-index:1;}
   .step-item.active .step-circle{background:var(--red);border-color:var(--red);color:#fff;}
   .step-item.done .step-circle{background:#1a9c4a;border-color:#1a9c4a;color:#fff;}
   .step-label{font-size:10px;font-weight:700;color:#bbb;text-transform:uppercase;letter-spacing:.4px;}
@@ -179,19 +106,12 @@
   .step-line.done{background:#1a9c4a;}
 
   /* AVISO BANCO */
-  .aviso-banco{
-    background:#FFF8E7;border:1.5px solid #F5A623;border-radius:10px;
-    padding:12px 14px;margin:14px 0;display:none;
-  }
+  .aviso-banco{background:#FFF8E7;border:1.5px solid #F5A623;border-radius:10px;padding:12px 14px;margin:14px 0;display:none;}
   .aviso-banco-titulo{font-size:13px;font-weight:900;color:#B8860B;display:flex;align-items:center;gap:6px;margin-bottom:5px;}
   .aviso-banco p{font-size:12px;color:#7A6000;line-height:1.55;}
   .aviso-banco strong{color:#B8860B;}
 
-  .scarcity-strip{
-    background:var(--gray-light);border-left:4px solid var(--red);border-radius:0 6px 6px 0;
-    padding:10px 14px;margin:16px 0 14px;font-size:13px;color:#333;font-weight:600;
-    display:flex;align-items:center;gap:8px;line-height:1.4;
-  }
+  .scarcity-strip{background:var(--gray-light);border-left:4px solid var(--red);border-radius:0 6px 6px 0;padding:10px 14px;margin:16px 0 14px;font-size:13px;color:#333;font-weight:600;display:flex;align-items:center;gap:8px;line-height:1.4;}
   .scarcity-strip svg{width:18px;height:18px;fill:var(--red);flex-shrink:0;}
   .scarcity-strip strong{color:var(--red);font-size:15px;}
   .scarcity-strip s{color:#999;}
@@ -202,18 +122,11 @@
 
   .form-group{margin-bottom:14px;}
   .form-group label{display:block;font-size:12px;font-weight:700;color:#333;margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px;}
-  .form-group input{
-    width:100%;border:2px solid #e0e0e0;border-radius:8px;padding:13px 14px;font-size:15px;
-    outline:none;transition:border-color .2s;background:#fff;color:var(--black);-webkit-appearance:none;
-  }
+  .form-group input{width:100%;border:2px solid #e0e0e0;border-radius:8px;padding:13px 14px;font-size:15px;outline:none;transition:border-color .2s;background:#fff;color:var(--black);-webkit-appearance:none;}
   .form-group input:focus{border-color:var(--red);}
   .form-group input::placeholder{color:#bbb;}
 
-  .btn-gerar{
-    width:100%;background:linear-gradient(135deg,var(--red),var(--red-dark));color:#fff;border:none;
-    border-radius:8px;padding:17px;font-size:17px;font-weight:900;text-transform:uppercase;cursor:pointer;
-    margin-top:6px;box-shadow:0 4px 16px rgba(232,0,13,.4);animation:pulse-btn 2s infinite;letter-spacing:.5px;
-  }
+  .btn-gerar{width:100%;background:linear-gradient(135deg,var(--red),var(--red-dark));color:#fff;border:none;border-radius:8px;padding:17px;font-size:17px;font-weight:900;text-transform:uppercase;cursor:pointer;margin-top:6px;box-shadow:0 4px 16px rgba(232,0,13,.4);animation:pulse-btn 2s infinite;letter-spacing:.5px;}
   .btn-gerar:disabled{opacity:.6;cursor:not-allowed;animation:none;}
 
   .spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:8px;}
@@ -234,11 +147,7 @@
   .pix-code-box{background:#f9f9f9;border:2px dashed var(--red);border-radius:8px;padding:12px;margin-bottom:12px;}
   .pix-code-text{font-size:10.5px;color:#333;word-break:break-all;line-height:1.6;font-family:monospace;}
 
-  .btn-copiar{
-    width:100%;background:#fff;color:var(--red);border:2px solid var(--red);border-radius:8px;
-    padding:14px;font-size:15px;font-weight:900;cursor:pointer;text-transform:uppercase;letter-spacing:.5px;
-    transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px;
-  }
+  .btn-copiar{width:100%;background:#fff;color:var(--red);border:2px solid var(--red);border-radius:8px;padding:14px;font-size:15px;font-weight:900;cursor:pointer;text-transform:uppercase;letter-spacing:.5px;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px;}
   .btn-copiar:active{background:var(--red);color:#fff;}
   .btn-copiar svg{width:18px;height:18px;}
 
@@ -302,74 +211,51 @@
 <!-- VSL PAGE -->
 <div id="vsl-page">
   <div class="main">
-
     <div class="headline-wrap">
       <span class="eyebrow">⚠️ Atenção Homens</span>
-      <h1>Doutor Revela 3 <span>Técnicas Ocultas</span> Para Engrossar e crecer o Pênis em 45 Dias<span></span></h1>
+      <h1>Doutor Revela 3 <span>Técnicas Ocultas</span> Para Engrossar o BRAÇO</h1>
       <p class="sub-headline">Assista o vídeo abaixo até o final e descubra Antes que seja removido da internet</p>
     </div>
 
     <div class="trust-strip">
-      <span class="trust-item">
-        <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        +47.000 homens
-      </span>
-      <span class="trust-item">
-        <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        Método comprovado
-      </span>
-      <span class="trust-item">
-        <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        100% Natural
-      </span>
+      <span class="trust-item"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>+47.000 homens</span>
+      <span class="trust-item"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Método comprovado</span>
+      <span class="trust-item"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>100% Natural</span>
     </div>
 
     <div class="player-wrap" id="player-wrap">
       <video id="main-video" preload="metadata" playsinline webkit-playsinline>
         <source src="https://metodotripe.shop/wp-content/uploads/2026/06/vsl1-1_kzlROg57.mp4" type="video/mp4">
       </video>
-
       <div id="play-overlay">
         <svg viewBox="0 0 100 100" fill="none">
           <circle cx="50" cy="50" r="50" fill="rgba(232,0,13,0.9)"/>
           <polygon points="38,28 38,72 72,50" fill="white"/>
         </svg>
       </div>
-
       <div id="pause-overlay"></div>
-
       <div class="controls" id="controls">
         <div class="progress-wrap" id="progress-wrap">
-          <div class="progress-fill" id="progress-fill">
-            <div class="progress-thumb"></div>
-          </div>
+          <div class="progress-fill" id="progress-fill"><div class="progress-thumb"></div></div>
         </div>
         <div class="ctrl-row">
-          <button class="ctrl-btn" id="play-btn" title="Play/Pause">
-            <svg id="play-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-          </button>
+          <button class="ctrl-btn" id="play-btn"><svg id="play-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></button>
           <span class="time-display" id="time-display">0:00 / 2:02</span>
           <div class="vol-wrap">
-            <button class="ctrl-btn" id="mute-btn" title="Mudo">
-              <svg id="vol-icon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
-            </button>
+            <button class="ctrl-btn" id="mute-btn"><svg id="vol-icon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
             <input type="range" class="vol-slider" id="vol-slider" min="0" max="1" step="0.05" value="1">
           </div>
-          <button class="ctrl-btn fullscreen-btn" id="fs-btn" title="Tela cheia">
-            <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
-          </button>
+          <button class="ctrl-btn fullscreen-btn" id="fs-btn"><svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg></button>
         </div>
       </div>
     </div>
 
     <div id="cta-btn">
-      <button onclick="goToPix()">
-        🔓 DESCOBRIR AGORA — QUERO MEU ACESSO
-      </button>
+      <button onclick="goToPix()">🔓 DESCOBRIR AGORA — QUERO MEU ACESSO</button>
       <p class="cta-sub">⚡ <span>Oferta exclusiva</span> para quem assistiu até o final • Vagas limitadas</p>
     </div>
 
-    <div class="urgency-strip" id="urgency-strip">
+    <div class="urgency-strip">
       <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
       <span>🔥 Atenção: assista o vídeo <strong>até o final</strong> para descobrir o segredo revelado pelo Doutor</span>
     </div>
@@ -385,7 +271,7 @@
         </div>
       </div>
       <div class="comment">
-        <div class="avatar"><img src="https://metodotripe.shop/wp-content/uploads/2026/04/4132fea5d9d86a3e12be9f581259e96c.jpg" alt="Roberto A."></div>
+        <div class="avatar"><img src="https://metodotripe.shop/wp-content/uploads/2026/06/CjKzp-o4_400x400.jpg" alt="Roberto A."></div>
         <div class="comment-body">
           <div class="comment-name">Roberto A. — RJ</div>
           <div class="stars">★★★★★</div>
@@ -393,7 +279,7 @@
         </div>
       </div>
       <div class="comment">
-        <div class="avatar"><img src="https://metodotripe.shop/wp-content/uploads/2026/04/dc1c19211dcd14aa6b32d0024cd4d4d1.jpg" alt="João P."></div>
+        <div class="avatar"><img src="https://metodotripe.shop/wp-content/uploads/2026/06/5bd1ed354dd667063e2fafd36473dd27.jpg" alt="João P."></div>
         <div class="comment-body">
           <div class="comment-name">João P. — MG</div>
           <div class="stars">★★★★★</div>
@@ -419,7 +305,7 @@
 <!-- PIX PAGE -->
 <div id="pix-page">
   <div class="checkout-banner">
-    <img src="https://metodotripe.shop/wp-content/uploads/2026/06/ChatGPT-Image-14-de-jun.-de-2026-23_58_46.png" alt="" id="checkout-banner-img">
+    <img src="https://metodotripe.shop/wp-content/uploads/2026/06/ChatGPT-Image-14-de-jun.-de-2026-23_58_46.png" alt="">
   </div>
   <div class="pix-header">
     <h2>🔓 Acesso Liberado — Última Etapa</h2>
@@ -429,7 +315,7 @@
   <div class="pix-body">
 
     <!-- STEPPER -->
-    <div class="stepper" id="stepper">
+    <div class="stepper">
       <div class="step-item done" id="step1">
         <div class="step-circle">✓</div>
         <span class="step-label">Dados</span>
@@ -466,6 +352,10 @@
         <label>WhatsApp</label>
         <input type="tel" id="inp-wpp" placeholder="(11) 99999-9999" autocomplete="tel">
       </div>
+      <div class="form-group">
+        <label>CPF</label>
+        <input type="tel" id="inp-cpf" placeholder="000.000.000-00" autocomplete="off">
+      </div>
 
       <!-- ORDER BUMP 1 -->
       <div class="bump-wrap">
@@ -478,9 +368,7 @@
               <div class="bump-desc">7 ingredientes secretos que irão te deixar grande — resultado garantido</div>
               <div class="bump-price"><s>R$ 29,90</s> apenas R$ 4,97</div>
             </div>
-            <div class="bump-check" id="bump-check-1">
-              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-            </div>
+            <div class="bump-check" id="bump-check-1"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
           </div>
           <div class="bump-footer">Clique no card para <span>adicionar ao seu pedido</span></div>
         </div>
@@ -494,12 +382,10 @@
             <img class="bump-img" src="https://metodotripe.shop/wp-content/uploads/2026/06/ChatGPT-Image-16-de-jun.-de-2026-19_56_13.png" alt="Teza Grande">
             <div class="bump-info">
               <div class="bump-title">Tezão Maximo</div>
-              <div class="bump-desc">25 Técnicas Comprovadas para Fazer ela Ter Orgamsos Intensos — Tudo em video</div>
+              <div class="bump-desc">25 Técnicas Comprovadas para Fazer ela Ter Orgasmos Intensos — Tudo em vídeo</div>
               <div class="bump-price"><s>R$ 29,90</s> apenas R$ 4,97</div>
             </div>
-            <div class="bump-check" id="bump-check-2">
-              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-            </div>
+            <div class="bump-check" id="bump-check-2"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
           </div>
           <div class="bump-footer">Clique no card para <span>adicionar ao seu pedido</span></div>
         </div>
@@ -524,34 +410,17 @@
 
     <!-- PIX RESULT -->
     <div id="pix-result">
-
-      <!-- AVISO BANCO INTELIGENTE -->
       <div class="aviso-banco" id="aviso-banco">
         <div class="aviso-banco-titulo">💡 Dica antes de pagar</div>
-        <p>
-          Alguns bancos exibem um alerta automático em todo pagamento PIX para produtos digitais — isso é um <strong>aviso padrão do sistema bancário</strong>, não tem nada a ver com o nosso produto.<br><br>
-          O <strong>Método Maquina de prazer</strong> é processado pelo <strong>Mercado Pago</strong>, maior plataforma de pagamentos da América Latina. Seu pagamento é <strong>100% seguro e protegido</strong>. ✅
-        </p>
+        <p>Alguns bancos exibem um alerta automático em todo pagamento PIX para produtos digitais — isso é um <strong>aviso padrão do sistema bancário</strong>, não tem nada a ver com o nosso produto.<br><br>O <strong>Método Tripê</strong> é processado pelo <strong>Mercado Pago</strong>, maior plataforma de pagamentos da América Latina. Seu pagamento é <strong>100% seguro e protegido</strong>. ✅</p>
       </div>
 
       <div class="pix-steps">
         <h4>📋 Como pagar com PIX:</h4>
-        <div class="pix-step">
-          <span class="step-num">1</span>
-          <span>Abra o aplicativo do seu banco ou carteira digital</span>
-        </div>
-        <div class="pix-step">
-          <span class="step-num">2</span>
-          <span>Toque em <strong>PIX → Pagar → Copia e Cola</strong> ou escaneie o QR Code</span>
-        </div>
-        <div class="pix-step">
-          <span class="step-num">3</span>
-          <span>Cole o código copiado ou aponte a câmera para o QR Code</span>
-        </div>
-        <div class="pix-step">
-          <span class="step-num">4</span>
-          <span>Confirme o pagamento e aguarde a liberação do acesso no seu e-mail</span>
-        </div>
+        <div class="pix-step"><span class="step-num">1</span><span>Abra o aplicativo do seu banco ou carteira digital</span></div>
+        <div class="pix-step"><span class="step-num">2</span><span>Toque em <strong>PIX → Pagar → Copia e Cola</strong> ou escaneie o QR Code</span></div>
+        <div class="pix-step"><span class="step-num">3</span><span>Cole o código copiado ou aponte a câmera para o QR Code</span></div>
+        <div class="pix-step"><span class="step-num">4</span><span>Confirme o pagamento e aguarde a liberação do acesso no seu e-mail</span></div>
       </div>
 
       <div class="qr-box">
@@ -574,13 +443,11 @@
       </div>
     </div>
 
-    <!-- PAGAMENTO APROVADO -->
     <div id="pix-aprovado">
       <div class="check-icon">✅</div>
       <h3>Pagamento aprovado!</h3>
       <p>Seu acesso foi liberado. Você receberá as instruções no e-mail informado em poucos minutos.</p>
     </div>
-
   </div>
 </div>
 
@@ -602,7 +469,7 @@
   <div class="modal-box">
     <div class="modal-icon">🔥</div>
     <h3>Sua oferta vai expirar!</h3>
-    <p>Você está prestes a perder acesso ao <strong>Método Tripê por apenas R$ 9,90</strong>.<br><br>Esta condição de lançamento não estará disponível se você sair agora. Centenas de homens já garantiram o acesso.</p>
+    <p>Você está prestes a perder acesso ao <strong>Método Tripê por apenas R$ 9,90</strong>.<br><br>Esta condição de lançamento não estará disponível se você sair agora.</p>
     <div class="modal-btns">
       <button class="btn-modal-stay" onclick="closeModalCheckout()">✅ QUERO GARANTIR MINHA OFERTA</button>
       <button class="btn-modal-leave" onclick="closeModalCheckout()">Perder minha oferta</button>
@@ -613,52 +480,33 @@
 <div id="copy-toast">✅ Código copiado!</div>
 
 <script>
-const VIDEO_DURATION = 114;
-const video = document.getElementById('main-video');
-const playerWrap = document.getElementById('player-wrap');
-const playOverlay = document.getElementById('play-overlay');
-const pauseOverlay = document.getElementById('pause-overlay');
-const progressFill = document.getElementById('progress-fill');
-const progressWrap = document.getElementById('progress-wrap');
-const playBtn = document.getElementById('play-btn');
-const playIcon = document.getElementById('play-icon');
-const volSlider = document.getElementById('vol-slider');
-const muteBtn = document.getElementById('mute-btn');
-const volIcon = document.getElementById('vol-icon');
-const timeDisplay = document.getElementById('time-display');
-const ctaBtn = document.getElementById('cta-btn');
+const VIDEO_DURATION=114;
+const video=document.getElementById('main-video');
+const playerWrap=document.getElementById('player-wrap');
+const playOverlay=document.getElementById('play-overlay');
+const pauseOverlay=document.getElementById('pause-overlay');
+const progressFill=document.getElementById('progress-fill');
+const progressWrap=document.getElementById('progress-wrap');
+const playBtn=document.getElementById('play-btn');
+const playIcon=document.getElementById('play-icon');
+const volSlider=document.getElementById('vol-slider');
+const muteBtn=document.getElementById('mute-btn');
+const volIcon=document.getElementById('vol-icon');
+const timeDisplay=document.getElementById('time-display');
+const ctaBtn=document.getElementById('cta-btn');
 
-let ctaShown = false;
-let controlsTimer;
-let currentPixCode = '';
-let pollInterval = null;
+let ctaShown=false,controlsTimer,currentPixCode='',pollInterval=null;
 
-function fmtTime(s){
-  s=Math.floor(s);
-  const m=Math.floor(s/60);
-  const sec=String(s%60).padStart(2,'0');
-  return m+':'+sec;
-}
+function fmtTime(s){s=Math.floor(s);return Math.floor(s/60)+':'+String(s%60).padStart(2,'0');}
 
-function playVideo(){
-  video.play();
-  playIcon.innerHTML='<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';
-  playOverlay.classList.add('hidden');
-}
-function pauseVideo(){
-  video.pause();
-  playIcon.innerHTML='<polygon points="5,3 19,12 5,21"/>';
-}
+function playVideo(){video.play();playIcon.innerHTML='<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';playOverlay.classList.add('hidden');}
+function pauseVideo(){video.pause();playIcon.innerHTML='<polygon points="5,3 19,12 5,21"/>';}
 
-playOverlay.addEventListener('click',()=>{ playVideo(); showControlsTemp(); });
-pauseOverlay.addEventListener('click',()=>{ if(video.paused) playVideo(); else pauseVideo(); showControlsTemp(); });
-playBtn.addEventListener('click',()=>{ if(video.paused) playVideo(); else pauseVideo(); showControlsTemp(); });
+playOverlay.addEventListener('click',()=>{playVideo();showControlsTemp();});
+pauseOverlay.addEventListener('click',()=>{if(video.paused)playVideo();else pauseVideo();showControlsTemp();});
+playBtn.addEventListener('click',()=>{if(video.paused)playVideo();else pauseVideo();showControlsTemp();});
 
-function showControlsTemp(){
-  playerWrap.classList.add('show-controls');
-  clearTimeout(controlsTimer);
-  controlsTimer=setTimeout(()=>playerWrap.classList.remove('show-controls'),2500);
-}
+function showControlsTemp(){playerWrap.classList.add('show-controls');clearTimeout(controlsTimer);controlsTimer=setTimeout(()=>playerWrap.classList.remove('show-controls'),2500);}
 playerWrap.addEventListener('mousemove',showControlsTemp);
 playerWrap.addEventListener('touchstart',showControlsTemp,{passive:true});
 
@@ -666,105 +514,54 @@ video.addEventListener('timeupdate',()=>{
   const pct=(video.currentTime/VIDEO_DURATION)*100;
   progressFill.style.width=Math.min(pct,100)+'%';
   timeDisplay.textContent=fmtTime(video.currentTime)+' / 2:02';
-  if(video.currentTime>=VIDEO_DURATION && !ctaShown){
-    ctaShown=true;
-    ctaBtn.style.display='block';
-    ctaBtn.scrollIntoView({behavior:'smooth',block:'nearest'});
-  }
+  if(video.currentTime>=VIDEO_DURATION&&!ctaShown){ctaShown=true;ctaBtn.style.display='block';ctaBtn.scrollIntoView({behavior:'smooth',block:'nearest'});}
 });
 
-progressWrap.addEventListener('click',(e)=>{
-  const rect=progressWrap.getBoundingClientRect();
-  const pct=(e.clientX-rect.left)/rect.width;
-  video.currentTime=pct*VIDEO_DURATION;
-  showControlsTemp();
-});
-progressWrap.addEventListener('touchstart',(e)=>{
-  const rect=progressWrap.getBoundingClientRect();
-  const pct=(e.touches[0].clientX-rect.left)/rect.width;
-  video.currentTime=Math.max(0,Math.min(pct*VIDEO_DURATION,VIDEO_DURATION));
-  showControlsTemp();
-},{passive:true});
+progressWrap.addEventListener('click',(e)=>{const rect=progressWrap.getBoundingClientRect();video.currentTime=((e.clientX-rect.left)/rect.width)*VIDEO_DURATION;showControlsTemp();});
+progressWrap.addEventListener('touchstart',(e)=>{const rect=progressWrap.getBoundingClientRect();video.currentTime=Math.max(0,Math.min(((e.touches[0].clientX-rect.left)/rect.width)*VIDEO_DURATION,VIDEO_DURATION));showControlsTemp();},{passive:true});
 
-volSlider.addEventListener('input',()=>{ video.volume=volSlider.value; video.muted=video.volume===0; updateVolIcon(); });
-muteBtn.addEventListener('click',()=>{ video.muted=!video.muted; volSlider.value=video.muted?0:video.volume||1; updateVolIcon(); });
-function updateVolIcon(){
-  if(video.muted||video.volume===0){
-    volIcon.innerHTML='<path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>';
-  } else {
-    volIcon.innerHTML='<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>';
-  }
-}
+volSlider.addEventListener('input',()=>{video.volume=volSlider.value;video.muted=video.volume===0;updateVolIcon();});
+muteBtn.addEventListener('click',()=>{video.muted=!video.muted;volSlider.value=video.muted?0:video.volume||1;updateVolIcon();});
+function updateVolIcon(){if(video.muted||video.volume===0){volIcon.innerHTML='<path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>';}else{volIcon.innerHTML='<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>';}}
 
-document.getElementById('fs-btn').addEventListener('click',()=>{
-  if(document.fullscreenElement){ document.exitFullscreen(); }
-  else { playerWrap.requestFullscreen&&playerWrap.requestFullscreen(); }
-});
+document.getElementById('fs-btn').addEventListener('click',()=>{if(document.fullscreenElement)document.exitFullscreen();else playerWrap.requestFullscreen&&playerWrap.requestFullscreen();});
 
-function goToPix(){
-  video.pause();
-  document.getElementById('vsl-page').style.display='none';
-  document.getElementById('pix-page').style.display='block';
-  window.scrollTo(0,0);
-}
+function goToPix(){video.pause();document.getElementById('vsl-page').style.display='none';document.getElementById('pix-page').style.display='block';window.scrollTo(0,0);}
 
-function showPixError(msg){
-  const errBox=document.getElementById('pix-error');
-  errBox.textContent=msg;
-  errBox.style.display='block';
-}
-function hidePixError(){ document.getElementById('pix-error').style.display='none'; }
+function showPixError(msg){const e=document.getElementById('pix-error');e.textContent=msg;e.style.display='block';}
+function hidePixError(){document.getElementById('pix-error').style.display='none';}
 
-const PRECO_BASE=9.90;
-const PRECO_BUMP1=4.97;
-const PRECO_BUMP2=4.97;
-let bump1=false;
-let bump2=false;
+const PRECO_BASE=9.90,PRECO_BUMP1=4.97,PRECO_BUMP2=4.97;
+let bump1=false,bump2=false;
 
-function calcTotal(){
-  return parseFloat((PRECO_BASE+(bump1?PRECO_BUMP1:0)+(bump2?PRECO_BUMP2:0)).toFixed(2));
-}
+function calcTotal(){return parseFloat((PRECO_BASE+(bump1?PRECO_BUMP1:0)+(bump2?PRECO_BUMP2:0)).toFixed(2));}
+function totalStr(){return calcTotal().toFixed(2).replace('.',',');}
 
 function atualizarTotalUI(){
-  const total=calcTotal();
-  const totalStr=total.toFixed(2).replace('.',',');
-  document.getElementById('total-display').textContent='R$ '+totalStr;
+  document.getElementById('total-display').textContent='R$ '+totalStr();
   const btn=document.getElementById('btn-gerar');
-  if(!btn.disabled) btn.innerHTML='🔓 LIBERAR TÉCNICAS COMPLETAS — R$ '+totalStr;
+  if(!btn.disabled)btn.innerHTML='🔓 LIBERAR TÉCNICAS COMPLETAS — R$ '+totalStr();
 }
 
 function toggleBump(qual){
-  if(qual==='bump1'){
-    bump1=!bump1;
-    document.getElementById('bump-card').classList.toggle('selected',bump1);
-  } else {
-    bump2=!bump2;
-    document.getElementById('bump-card-2').classList.toggle('selected',bump2);
-  }
+  if(qual==='bump1'){bump1=!bump1;document.getElementById('bump-card').classList.toggle('selected',bump1);}
+  else{bump2=!bump2;document.getElementById('bump-card-2').classList.toggle('selected',bump2);}
   atualizarTotalUI();
 }
 
-// STEPPER
 function atualizarStepper(etapa){
-  const s1=document.getElementById('step1');
-  const s2=document.getElementById('step2');
-  const s3=document.getElementById('step3');
-  const l1=document.getElementById('line1');
-  const l2=document.getElementById('line2');
-
+  const s1=document.getElementById('step1'),s2=document.getElementById('step2'),s3=document.getElementById('step3');
+  const l1=document.getElementById('line1'),l2=document.getElementById('line2');
   [s1,s2,s3].forEach(s=>s.classList.remove('active','done'));
   [l1,l2].forEach(l=>l.classList.remove('done'));
-
   if(etapa===2){
-    s1.classList.add('done'); s1.querySelector('.step-circle').innerHTML='✓';
-    l1.classList.add('done');
-    s2.classList.add('active');
+    s1.classList.add('done');s1.querySelector('.step-circle').innerHTML='✓';
+    l1.classList.add('done');s2.classList.add('active');
     document.getElementById('aviso-banco').style.display='block';
-  } else if(etapa===3){
-    s1.classList.add('done'); s1.querySelector('.step-circle').innerHTML='✓';
-    s2.classList.add('done'); s2.querySelector('.step-circle').innerHTML='✓';
-    l1.classList.add('done'); l2.classList.add('done');
-    s3.classList.add('active');
+  }else if(etapa===3){
+    s1.classList.add('done');s1.querySelector('.step-circle').innerHTML='✓';
+    s2.classList.add('done');s2.querySelector('.step-circle').innerHTML='✓';
+    l1.classList.add('done');l2.classList.add('done');s3.classList.add('active');
     document.getElementById('aviso-banco').style.display='none';
   }
 }
@@ -773,36 +570,25 @@ async function gerarPix(){
   const nome=document.getElementById('inp-nome').value.trim();
   const email=document.getElementById('inp-email').value.trim();
   const wpp=document.getElementById('inp-wpp').value.trim();
+  const cpf=document.getElementById('inp-cpf').value.replace(/\D/g,'');
 
-  if(!nome||!email||!wpp){
-    showPixError('Preencha todos os campos para continuar.');
-    return;
-  }
-
-  // Validação básica de e-mail
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
-    showPixError('Digite um e-mail válido.');
-    return;
-  }
+  if(!nome||!email||!wpp||!cpf){showPixError('Preencha todos os campos para continuar.');return;}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){showPixError('Digite um e-mail válido.');return;}
+  if(cpf.length!==11){showPixError('Digite um CPF válido com 11 dígitos.');return;}
 
   hidePixError();
-
   const btn=document.getElementById('btn-gerar');
   btn.disabled=true;
   btn.innerHTML='<span class="spinner"></span> LIBERANDO ACESSO...';
 
-  try {
+  try{
     const response=await fetch('/api/criar-pix',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({nome,email,telefone:wpp,bump1,bump2})
+      body:JSON.stringify({nome,email,telefone:wpp,cpf,bump1,bump2})
     });
-
     const data=await response.json();
-
-    if(!response.ok){
-      throw new Error(data.error||'Erro ao gerar PIX. Tente novamente.');
-    }
+    if(!response.ok)throw new Error(data.error||'Erro ao gerar PIX. Tente novamente.');
 
     document.getElementById('pix-qr-img').src='data:image/png;base64,'+data.qr_code_base64;
     document.getElementById('pix-code-display').textContent=data.qr_code;
@@ -813,106 +599,85 @@ async function gerarPix(){
     document.getElementById('pix-result').scrollIntoView({behavior:'smooth',block:'start'});
 
     iniciarPolling(data.id);
-
-  } catch(err){
+  }catch(err){
     console.error(err);
     showPixError(err.message||'Erro ao gerar PIX. Tente novamente.');
     btn.disabled=false;
-    // Restaura com valor correto incluindo bumps
-    const totalStr=calcTotal().toFixed(2).replace('.',',');
-    btn.innerHTML='🔓 LIBERAR TÉCNICAS COMPLETAS — R$ '+totalStr;
+    btn.innerHTML='🔓 LIBERAR TÉCNICAS COMPLETAS — R$ '+totalStr();
   }
 }
 
 function iniciarPolling(paymentId){
-  if(pollInterval) clearInterval(pollInterval);
-
-  // Avança stepper para etapa 2 (Pagamento)
+  if(pollInterval)clearInterval(pollInterval);
   atualizarStepper(2);
-
   pollInterval=setInterval(async()=>{
-    try {
+    try{
       const response=await fetch('/api/status-pix?id='+paymentId);
       const data=await response.json();
-
       if(response.ok){
         if(data.status==='approved'){
           clearInterval(pollInterval);
-          // Avança stepper para etapa 3 (Acesso)
           atualizarStepper(3);
           document.getElementById('pix-result').style.display='none';
           document.getElementById('pix-aprovado').style.display='block';
           document.getElementById('pix-aprovado').scrollIntoView({behavior:'smooth',block:'start'});
-        } else if(data.status==='cancelled'||data.status==='rejected'||data.status==='expired'){
+        }else if(['cancelled','rejected','expired'].includes(data.status)){
           clearInterval(pollInterval);
           document.getElementById('aguardando').innerHTML='⚠️ PIX expirado ou cancelado. <a href="javascript:location.reload()" style="color:var(--red);font-weight:700;">Gerar novo PIX</a>';
         }
       }
-    } catch(err){
-      console.error('Erro ao verificar status:',err);
-    }
+    }catch(err){console.error('Erro ao verificar status:',err);}
   },5000);
 }
 
-// Limpa polling ao sair
-window.addEventListener('beforeunload',()=>{ if(pollInterval) clearInterval(pollInterval); });
+window.addEventListener('beforeunload',()=>{if(pollInterval)clearInterval(pollInterval);});
 
 function copiarCodigo(){
-  if(!currentPixCode) return;
-  if(navigator.clipboard){
-    navigator.clipboard.writeText(currentPixCode)
-      .then(showToast)
-      .catch(()=>{ copiarFallback(); });
-  } else {
-    copiarFallback();
-  }
+  if(!currentPixCode)return;
+  if(navigator.clipboard){navigator.clipboard.writeText(currentPixCode).then(showToast).catch(copiarFallback);}
+  else copiarFallback();
 }
-
 function copiarFallback(){
   const ta=document.createElement('textarea');
-  ta.value=currentPixCode;
-  ta.style.position='fixed';ta.style.opacity='0';
+  ta.value=currentPixCode;ta.style.position='fixed';ta.style.opacity='0';
   document.body.appendChild(ta);ta.select();
-  try{ document.execCommand('copy'); showToast(); }
-  catch(e){ alert('Não foi possível copiar. Copie manualmente o código acima.'); }
+  try{document.execCommand('copy');showToast();}
+  catch(e){alert('Copie manualmente o código acima.');}
   document.body.removeChild(ta);
 }
+function showToast(){const t=document.getElementById('copy-toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500);}
 
-function showToast(){
-  const t=document.getElementById('copy-toast');
-  t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),2500);
-}
-
-let exitShown=false;
-let exitCheckoutShown=false;
-
+let exitShown=false,exitCheckoutShown=false;
 function showExitModal(){
-  const noCheckout=document.getElementById('pix-page').style.display==='block';
-  if(noCheckout){
-    if(!exitCheckoutShown){ exitCheckoutShown=true; document.getElementById('exit-modal-checkout').classList.add('show'); }
-  } else {
-    if(!exitShown){ exitShown=true; if(!video.paused) pauseVideo(); document.getElementById('exit-modal').classList.add('show'); }
+  if(document.getElementById('pix-page').style.display==='block'){
+    if(!exitCheckoutShown){exitCheckoutShown=true;document.getElementById('exit-modal-checkout').classList.add('show');}
+  }else{
+    if(!exitShown){exitShown=true;if(!video.paused)pauseVideo();document.getElementById('exit-modal').classList.add('show');}
   }
 }
-function closeModal(){
-  document.getElementById('exit-modal').classList.remove('show');
-  const vp=document.getElementById('player-wrap');
-  if(vp) vp.scrollIntoView({behavior:'smooth',block:'center'});
-}
-function closeModalCheckout(){ document.getElementById('exit-modal-checkout').classList.remove('show'); }
+function closeModal(){document.getElementById('exit-modal').classList.remove('show');document.getElementById('player-wrap').scrollIntoView({behavior:'smooth',block:'center'});}
+function closeModalCheckout(){document.getElementById('exit-modal-checkout').classList.remove('show');}
 
-document.addEventListener('mouseleave',(e)=>{ if(e.clientY<10) showExitModal(); });
-document.addEventListener('visibilitychange',()=>{ if(document.visibilityState==='hidden') showExitModal(); });
-window.addEventListener('popstate',()=>{ showExitModal(); history.pushState(null,'',location.href); });
+document.addEventListener('mouseleave',(e)=>{if(e.clientY<10)showExitModal();});
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')showExitModal();});
+window.addEventListener('popstate',()=>{showExitModal();history.pushState(null,'',location.href);});
 history.pushState(null,'',location.href);
 
 document.getElementById('inp-wpp').addEventListener('input',function(){
   let v=this.value.replace(/\D/g,'');
   if(v.length>11)v=v.slice(0,11);
-  if(v.length>6) v='('+v.slice(0,2)+') '+v.slice(2,7)+'-'+v.slice(7);
-  else if(v.length>2) v='('+v.slice(0,2)+') '+v.slice(2);
-  else if(v.length>0) v='('+v;
+  if(v.length>6)v='('+v.slice(0,2)+') '+v.slice(2,7)+'-'+v.slice(7);
+  else if(v.length>2)v='('+v.slice(0,2)+') '+v.slice(2);
+  else if(v.length>0)v='('+v;
+  this.value=v;
+});
+
+document.getElementById('inp-cpf').addEventListener('input',function(){
+  let v=this.value.replace(/\D/g,'');
+  if(v.length>11)v=v.slice(0,11);
+  if(v.length>9)v=v.slice(0,3)+'.'+v.slice(3,6)+'.'+v.slice(6,9)+'-'+v.slice(9);
+  else if(v.length>6)v=v.slice(0,3)+'.'+v.slice(3,6)+'.'+v.slice(6);
+  else if(v.length>3)v=v.slice(0,3)+'.'+v.slice(3);
   this.value=v;
 });
 </script>
