@@ -1,7 +1,4 @@
 // /api/status-pix.js
-// Function serverless do Vercel: consulta o status de um pagamento PIX
-// pelo ID retornado em /api/criar-pix.
-
 export default async function handler(req, res) {
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'Método não permitido' });
@@ -15,7 +12,6 @@ export default async function handler(req, res) {
     }
 
     const ACCESS_TOKEN = process.env.MP_ACCESS_TOKEN;
-
     if (!ACCESS_TOKEN) {
       return res.status(500).json({ error: 'Access Token não configurado no servidor' });
     }
@@ -31,15 +27,12 @@ export default async function handler(req, res) {
 
     if (!response.ok) {
       console.error('Erro Mercado Pago:', data);
-      return res.status(response.status).json({
-        error: 'Erro ao consultar pagamento',
-        details: data,
-      });
+      return res.status(response.status).json({ error: 'Erro ao consultar pagamento', details: data });
     }
 
     return res.status(200).json({
       id: data.id,
-      status: data.status, // pending, approved, rejected, cancelled, etc.
+      status: data.status,
       status_detail: data.status_detail,
     });
 
